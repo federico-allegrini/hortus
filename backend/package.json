@@ -1,0 +1,38 @@
+{
+  "name": "hortus-test-backend",
+  "version": "1.0.0",
+  "description": "Hortus",
+  "author": "Federico Allegrini",
+  "license": "ISC",
+  "scripts": {
+    "dev": "keystone-next"
+  },
+  "dependencies": {
+    "@keystone-next/admin-ui": "^8.0.1",
+    "@keystone-next/auth": "^14.0.0",
+    "@keystone-next/cloudinary": "^2.0.9",
+    "@keystone-next/fields": "^4.1.1",
+    "@keystone-next/keystone": "^9.3.0",
+    "@keystone-next/types": "^12.0.0",
+    "@keystonejs/server-side-graphql-client": "^1.1.2",
+    "@types/nodemailer": "^6.4.0",
+    "dotenv": "^8.2.0",
+    "nodemailer": "^6.4.17",
+    "stripe": "^8.130.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.2"
+  }
+}
