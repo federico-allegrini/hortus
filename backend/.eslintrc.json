@@ -18,6 +18,25 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": 2 // Means error
+        "prettier/prettier": 2, // Means error,
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "ts": "never",
+                "": "never"
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".ts"
+                ]
+            }
+        }
     }
 }
