@@ -7,7 +7,10 @@ const NavStyles = styled.ul`
   justify-self: end;
   font-size: 2rem;
   a,
-  button {
+  button,
+  select,
+  option {
+    color: var(--black);
     padding: 1rem 3rem;
     display: flex;
     align-items: center;
@@ -21,6 +24,9 @@ const NavStyles = styled.ul`
     @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
+    }
+    option {
+      font-size: 0.7em;
     }
     &:before {
       content: "";
@@ -56,6 +62,9 @@ const NavStyles = styled.ul`
         width: calc(100% - 10px);
       }
     }
+  }
+  select {
+    font-size: 0.9em;
   }
   @media (max-width: 1300px) {
     border-top: 1px solid var(--lightGray);

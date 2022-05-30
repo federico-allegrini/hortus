@@ -31,17 +31,17 @@ const HeaderStyles = styled.header`
   }
 `;
 
-export default function Header() {
+export default function Header({ t }) {
   return (
     <HeaderStyles>
       <div className="bar">
         <Logo>
-          <Link href="/">Logo Hortus</Link>
+          <Link href="/">{t.logoName}</Link>
         </Logo>
-        <Nav />
+        <Nav t={t} />
       </div>
-      <div className="sub-bar">Sub bar</div>
-      <div>Other link</div>
+      <div className="sub-bar">{t.subBar}</div>
+      <div>{t.otherLinks}</div>
     </HeaderStyles>
   );
 }

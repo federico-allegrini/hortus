@@ -1,3 +1,3 @@
-export default function HomePage() {
-  return <div>Index page!</div>;
+export default function HomePage({ t }) {
+  return <div>{t.indexPage}</div>;
 }

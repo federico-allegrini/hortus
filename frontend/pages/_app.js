@@ -1,6 +1,7 @@
 import NProgress from "nprogress";
 import Router from "next/router";
 import Page from "../components/Page";
+import getTranslation from "../lib/getTranslation";
 import "../components/styles/nprogress.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -10,7 +11,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function MyApp({ Component, pageProps }) {
   return (
     <Page>
-      <Component {...pageProps} />
+      <Component {...pageProps} t={getTranslation()} />
     </Page>
   );
 }
