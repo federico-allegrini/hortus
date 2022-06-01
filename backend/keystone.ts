@@ -5,6 +5,7 @@ import {
 } from "@keystone-next/keystone/session";
 import { createAuth } from "@keystone-next/auth";
 import CultivationArea from "./schemas/CultivationArea";
+import CultivationAreaImage from "./schemas/CultivationAreaImage";
 import User from "./schemas/User";
 import "dotenv/config";
 
@@ -40,6 +41,7 @@ export default withAuth(
     lists: createSchema({
       User,
       CultivationArea,
+      CultivationAreaImage,
     }),
     ui: {
       isAccessAllowed: ({ session }) => !!session?.data,

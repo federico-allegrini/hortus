@@ -24,5 +24,15 @@ export default list({
         hideCreate: true,
       },
     }),
+    photos: relationship({
+      ref: "CultivationAreaImage.cultivationArea",
+      many: true,
+      ui: {
+        displayMode: "cards",
+        cardFields: ["image", "altText"],
+        inlineCreate: { fields: ["image", "altText"] },
+        inlineEdit: { fields: ["image", "altText"] },
+      },
+    }),
   },
 });
