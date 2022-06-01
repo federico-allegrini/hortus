@@ -4,6 +4,7 @@ import {
   statelessSessions,
 } from "@keystone-next/keystone/session";
 import { createAuth } from "@keystone-next/auth";
+import CultivationArea from "./schemas/CultivationArea";
 import User from "./schemas/User";
 import "dotenv/config";
 
@@ -38,6 +39,7 @@ export default withAuth(
     },
     lists: createSchema({
       User,
+      CultivationArea,
     }),
     ui: {
       isAccessAllowed: ({ session }) => !!session?.data,
