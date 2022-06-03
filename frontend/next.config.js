@@ -3,4 +3,7 @@ module.exports = {
     locales: ["it", "en"],
     defaultLocale: "it",
   },
+  compiler: {
+    styledComponents: true,
+  },
 };

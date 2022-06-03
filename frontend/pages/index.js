@@ -1,3 +1,1 @@
-export default function HomePage({ t }) {
-  return <div>{t.indexPage}</div>;
-}
+export { default } from "./cultivation-areas";
