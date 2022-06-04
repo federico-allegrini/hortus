@@ -4,15 +4,15 @@ import Page from "../components/Page";
 import getTranslation from "../lib/getTranslation";
 import "../components/styles/nprogress.css";
 import { ApolloProvider } from "@apollo/client";
-import apolloClient from "../lib/apolloClient";
+import withData from "../lib/withData";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apollo }) {
   return (
-    <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={apollo}>
       <Page>
         <Component {...pageProps} t={getTranslation()} />
       </Page>
@@ -29,4 +29,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
   return { pageProps };
 };
 
-export default MyApp;
+export default withData(MyApp);
