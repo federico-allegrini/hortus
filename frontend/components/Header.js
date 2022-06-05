@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import Nav from "./Nav";
+import SubBarStyles from "./styles/SubBarStyles";
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -24,14 +26,36 @@ const HeaderStyles = styled.header`
     justify-content: space-between;
     align-items: stretch;
   }
-  .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    border-bottom: 1px solid var(--black, black);
-  }
 `;
 
+function getSubBarElements(router, t) {
+  const categoryPath = router.asPath.split("/")[1];
+  let elements = null;
+  // TODO: Add new links
+  switch (categoryPath) {
+    case t.cultivationAreasLink:
+    default:
+      elements = (
+        <>
+          <input
+            type={"search"}
+            placeholder={`${t.search} ${t.cultivationAreas.toLowerCase()}`}
+          />
+          <Link href={`/${t.createNewCultivationAreaLink}`}>
+            {t.createNewCultivationArea}
+          </Link>
+          <Link href={`/${t.cultivationAreasLink}`}>
+            {t.myCultivationAreas}
+          </Link>
+        </>
+      );
+      break;
+  }
+  return elements;
+}
+
 export default function Header({ t }) {
+  const router = useRouter();
   return (
     <HeaderStyles>
       <div className="bar">
@@ -40,8 +64,7 @@ export default function Header({ t }) {
         </Logo>
         <Nav t={t} />
       </div>
-      <div className="sub-bar">{t.subBar}</div>
-      <div>{t.otherLinks}</div>
+      <SubBarStyles>{getSubBarElements(router, t)}</SubBarStyles>
     </HeaderStyles>
   );
 }

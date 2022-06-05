@@ -5,7 +5,7 @@ import NavStyles from "./styles/NavStyles";
 export default function Nav({ t }) {
   return (
     <NavStyles>
-      <Link href={`/${t.informationLink}`}>{t.information}</Link>
+      <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
       <LanguageSelector />
     </NavStyles>
   );
