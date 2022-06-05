@@ -4,6 +4,7 @@ import ItemStyles from "./styles/ItemStyles";
 import Title from "./styles/Title";
 import SizeTag from "./styles/SizeTag";
 import { blurDataURL_CultivationArea } from "../config";
+import formatSize from "../lib/formatSize";
 
 export default function CultivationArea({ cultivationArea }) {
   return (
@@ -25,7 +26,8 @@ export default function CultivationArea({ cultivationArea }) {
         </Link>
       </Title>
       <SizeTag>
-        {cultivationArea.width}x{cultivationArea.height}m²
+        {formatSize(cultivationArea.width, "m")}x
+        {formatSize(cultivationArea.height, "m", true, true)}
       </SizeTag>
       <p>{cultivationArea.description}</p>
     </ItemStyles>
