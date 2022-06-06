@@ -1,5 +1,5 @@
-import ClientOnly from "../components/ClientOnly";
-import CultivationAreas from "../components/CultivationAreas";
+import ClientOnly from "../../components/ClientOnly";
+import CultivationAreas from "../../components/CultivationAreas/CultivationAreas";
 
 export default function HomePage({ t }) {
   return (

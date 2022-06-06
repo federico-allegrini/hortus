@@ -4,11 +4,19 @@ export default {
   otherLinks: "Altri collegamenti",
   information: "Informazioni",
   search: "Cerca",
+  name: "Nome",
+  description: "Descrizione",
+  width: "Larghezza",
+  height: "Altezza",
+  photos: "Foto",
+  resetForm: "Reimposta dati",
+  clearForm: "Pulisci dati",
   // Links
   cultivationAreasLink: "cultivation-areas",
-  createCultivationAreaLink: "cultivation-areas/create",
+  createNewCultivationAreaLink: "cultivation-areas/create",
   // Cultivation Areas
   cultivationAreas: "Aree di coltivazione",
   createNewCultivationArea: "Crea nuova area",
   myCultivationAreas: "Le mie aree di coltivazione",
+  createArea: "Crea area",
 };

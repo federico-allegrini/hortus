@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import ItemStyles from "./styles/ItemStyles";
-import Title from "./styles/Title";
-import SizeTag from "./styles/SizeTag";
-import { blurDataURL_CultivationArea } from "../config";
-import formatSize from "../lib/formatSize";
+import ItemStyles from "../styles/ItemStyles";
+import Title from "../styles/Title";
+import SizeTag from "../styles/SizeTag";
+import { blurDataURL_CultivationArea } from "../../config";
+import formatSize from "../../lib/formatSize";
 
 export default function CultivationArea({ cultivationArea }) {
   return (
