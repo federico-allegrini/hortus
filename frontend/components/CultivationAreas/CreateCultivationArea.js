@@ -1,6 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
 import useForm from "../../lib/useForm";
 import Form from "../styles/Form";
+import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
+import Router from "next/router";
 
 const CREATE_CULTIVATION_AREA_MUTATION = gql`
   mutation CREATE_CULTIVATION_AREA_MUTATION(
@@ -73,12 +75,13 @@ export default function CreateCultivationArea({ t }) {
             photos,
             altText: `${altText}-1`,
           },
+          refetchQueries: [{ query: ALL_CULTIVATION_AREAS_QUERY }],
         };
         const res = await createCultivationArea(cultivationAreaPayload);
+        const id = res.data.createCultivationArea.id;
         // Upload other photos and connect to area
         const numerOfPhotos = inputs.photos.length;
         if (numerOfPhotos > 1) {
-          const id = res.data.createCultivationArea.id;
           // Start from 1 for skip the first photo: already uploaded
           for (let i = 1; i < numerOfPhotos; i++) {
             const cultivationAreaImagePayload = {
@@ -92,6 +95,10 @@ export default function CreateCultivationArea({ t }) {
           }
         }
         clearForm();
+        // Go to cultivation area's page
+        Router.push({
+          pathname: `/cultivation-areas/${id}`,
+        });
       }}
     >
       {error ? <p>Error: {error.message}</p> : null}

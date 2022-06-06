@@ -2,7 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import CultivationArea from "./CultivationArea";
 import styled from "styled-components";
 
-const ALL_CULTIVATION_AREAS_QUERY = gql`
+export const ALL_CULTIVATION_AREAS_QUERY = gql`
   query ALL_CULTIVATION_AREAS_QUERY {
     allCultivationAreas {
       id

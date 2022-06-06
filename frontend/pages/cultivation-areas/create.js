@@ -1,7 +1,7 @@
 import ClientOnly from "../../components/ClientOnly";
 import CreateCultivationArea from "../../components/CultivationAreas/CreateCultivationArea";
 
-export default function HomePage({ t }) {
+export default function CreateCultivationAreaPage({ t }) {
   return (
     <div>
       <h1>{t.createNewCultivationArea}</h1>

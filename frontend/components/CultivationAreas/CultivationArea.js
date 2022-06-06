@@ -21,7 +21,7 @@ export default function CultivationArea({ cultivationArea }) {
         />
       </div>
       <Title>
-        <Link href={`/cultivation-area/${cultivationArea.id}`}>
+        <Link href={`/cultivation-areas/${cultivationArea.id}`}>
           {cultivationArea.name}
         </Link>
       </Title>

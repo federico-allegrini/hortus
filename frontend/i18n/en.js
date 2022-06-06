@@ -11,6 +11,7 @@ export default {
   photos: "Photos",
   resetForm: "Reset form",
   clearForm: "Clear form",
+  dimensions: "Dimensions",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

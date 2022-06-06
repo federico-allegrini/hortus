@@ -1,7 +1,7 @@
 import ClientOnly from "../../components/ClientOnly";
 import CultivationAreas from "../../components/CultivationAreas/CultivationAreas";
 
-export default function HomePage({ t }) {
+export default function AllCultivationAreas({ t }) {
   return (
     <div>
       <h1>{t.cultivationAreas}</h1>
