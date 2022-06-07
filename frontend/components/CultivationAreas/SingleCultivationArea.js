@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { blurDataURL_CultivationArea } from "../../config";
 import formatSize from "../../lib/formatSize";
+import ErrorMessage from "../ErrorMessage";
 
 const CultivationAreaStyles = styled.div`
   max-width: var(--maxWidth);
@@ -56,8 +57,8 @@ export default function SingleCultivationArea({ id, t }) {
       id,
     },
   });
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <h3>{t.loading}...</h3>;
+  if (error) return <ErrorMessage error={error} t={t} />;
   const { CultivationArea } = data;
   return (
     <CultivationAreaStyles>

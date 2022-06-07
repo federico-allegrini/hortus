@@ -3,6 +3,7 @@ import useForm from "../../lib/useForm";
 import Form from "../styles/Form";
 import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
 import Router from "next/router";
+import ErrorMessage from "../ErrorMessage";
 
 const CREATE_CULTIVATION_AREA_MUTATION = gql`
   mutation CREATE_CULTIVATION_AREA_MUTATION(
@@ -101,8 +102,8 @@ export default function CreateCultivationArea({ t }) {
         });
       }}
     >
-      {error ? <p>Error: {error.message}</p> : null}
-      {errorImage ? <p>Error: {errorImage.message}</p> : null}
+      <ErrorMessage error={error} t={t} />
+      <ErrorMessage error={errorImage} t={t} />
       <fieldset
         disabled={loading || loadingImage}
         aria-busy={loading || loadingImage}

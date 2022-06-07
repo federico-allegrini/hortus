@@ -12,6 +12,8 @@ export default {
   resetForm: "Reset form",
   clearForm: "Clear form",
   dimensions: "Dimensions",
+  error: "Error",
+  loading: "Loading",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

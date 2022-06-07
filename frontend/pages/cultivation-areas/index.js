@@ -6,7 +6,7 @@ export default function AllCultivationAreas({ t }) {
     <div>
       <h1>{t.cultivationAreas}</h1>
       <ClientOnly>
-        <CultivationAreas />
+        <CultivationAreas t={t} />
       </ClientOnly>
     </div>
   );

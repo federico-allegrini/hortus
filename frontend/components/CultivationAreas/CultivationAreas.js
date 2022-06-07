@@ -1,5 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import CultivationArea from "./CultivationArea";
+import ErrorMessage from "../ErrorMessage";
 import styled from "styled-components";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
@@ -27,10 +28,10 @@ const CultivationAreasStyles = styled.div`
   grid-gap: 60px;
 `;
 
-export default function CultivationAreas() {
+export default function CultivationAreas({ t }) {
   const { data, loading, error } = useQuery(ALL_CULTIVATION_AREAS_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Eror: {error.message}</p>;
+  if (loading) return <h3>{t.loading}...</h3>;
+  if (error) return <ErrorMessage error={error} t={t} />;
   return (
     <CultivationAreasStyles>
       {data.allCultivationAreas.map((cultivationArea) => (

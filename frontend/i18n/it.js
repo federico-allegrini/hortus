@@ -12,6 +12,8 @@ export default {
   resetForm: "Reimposta dati",
   clearForm: "Pulisci dati",
   dimensions: "Dimensioni",
+  error: "Errore",
+  loading: "Caricamento",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",
