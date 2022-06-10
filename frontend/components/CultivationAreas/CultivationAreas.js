@@ -38,6 +38,7 @@ export default function CultivationAreas({ t }) {
         <CultivationArea
           key={cultivationArea.id}
           cultivationArea={cultivationArea}
+          t={t}
         />
       ))}
     </CultivationAreasStyles>

@@ -14,6 +14,10 @@ export default {
   dimensions: "Dimensioni",
   error: "Errore",
   loading: "Caricamento",
+  edit: "Modifica",
+  update: "Aggiorna",
+  activeM: "Attivo",
+  activeF: "Attiva",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",
@@ -22,4 +26,5 @@ export default {
   createNewCultivationArea: "Crea nuova area",
   myCultivationAreas: "Le mie aree di coltivazione",
   createArea: "Crea area",
+  updateCultivationArea: "Aggiorna area di coltivazione",
 };

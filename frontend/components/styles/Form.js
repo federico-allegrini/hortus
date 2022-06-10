@@ -28,6 +28,12 @@ const Form = styled.form`
       color: var(--green);
     }
   }
+  h1 {
+    span {
+      font-style: italic;
+      color: var(--green);
+    }
+  }
   input,
   textarea,
   select {
@@ -55,6 +61,11 @@ const Form = styled.form`
     &:hover {
       background: var(--lightGreen);
     }
+  }
+  input[type="checkbox"] {
+    width: auto;
+    margin: 0 10px;
+    filter: grayscale(1);
   }
   fieldset {
     border: 0;

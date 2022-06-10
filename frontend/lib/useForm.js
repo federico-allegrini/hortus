@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useForm(initial = {}) {
   const [inputs, setInputs] = useState(initial);
+  const initialValues = Object.values(initial).join("");
+
+  useEffect(() => {
+    setInputs(initial);
+  }, [initialValues]);
 
   function handleChange(e) {
     let { value, name, type } = e.target;
@@ -11,6 +16,9 @@ export default function useForm(initial = {}) {
         break;
       case "file":
         value = e.target.files;
+        break;
+      case "checkbox":
+        value = e.target.checked;
         break;
     }
     setInputs({

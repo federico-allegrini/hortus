@@ -32,12 +32,13 @@ const CultivationAreaStyles = styled.div`
   }
 `;
 
-const SINGLE_CULTIVATION_AREA = gql`
+export const SINGLE_CULTIVATION_AREA = gql`
   query SINGLE_CULTIVATION_AREA($id: ID!) {
     CultivationArea(where: { id: $id }) {
       id
       name
       description
+      active
       width
       height
       photos {

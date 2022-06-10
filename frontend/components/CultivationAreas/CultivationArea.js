@@ -6,7 +6,7 @@ import SizeTag from "../styles/SizeTag";
 import { blurDataURL_CultivationArea } from "../../config";
 import formatSize from "../../lib/formatSize";
 
-export default function CultivationArea({ cultivationArea }) {
+export default function CultivationArea({ cultivationArea, t }) {
   return (
     <ItemStyles>
       <div className="image-div">
@@ -30,6 +30,18 @@ export default function CultivationArea({ cultivationArea }) {
         {formatSize(cultivationArea.height, "m", true, true)}
       </SizeTag>
       <p>{cultivationArea.description}</p>
+      <div className="buttonList">
+        <Link
+          href={{
+            pathname: "cultivation-areas/update",
+            query: {
+              id: cultivationArea.id,
+            },
+          }}
+        >
+          {t.edit + " ✏️"}
+        </Link>
+      </div>
     </ItemStyles>
   );
 }

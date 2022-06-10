@@ -32,6 +32,13 @@ const ItemStyles = styled.div`
       font-size: 1rem;
       padding: 1rem;
     }
+    a {
+      font-weight: bold;
+      &:hover {
+        text-decoration: none;
+        color: var(--green);
+      }
+    }
   }
 `;
 
