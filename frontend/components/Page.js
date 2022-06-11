@@ -55,7 +55,7 @@ export default function Page({ children }) {
   return (
     <div>
       <GlobalStyles />
-      <Header t={children.props.t} />
+      <Header />
       <InnerStyles>{children}</InnerStyles>
     </div>
   );

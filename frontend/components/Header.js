@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useTranslation } from "../lib/getTranslation";
 import Nav from "./Nav";
 import SubBarStyles from "./styles/SubBarStyles";
 
@@ -54,7 +55,8 @@ function getSubBarElements(router, t) {
   return elements;
 }
 
-export default function Header({ t }) {
+export default function Header() {
+  const { t } = useTranslation();
   const router = useRouter();
   return (
     <HeaderStyles>
@@ -62,7 +64,7 @@ export default function Header({ t }) {
         <Logo>
           <Link href="/">{t.logoName}</Link>
         </Logo>
-        <Nav t={t} />
+        <Nav />
       </div>
       <SubBarStyles>{getSubBarElements(router, t)}</SubBarStyles>
     </HeaderStyles>

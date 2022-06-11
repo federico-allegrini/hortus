@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { blurDataURL_CultivationArea } from "../../config";
+import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import ErrorMessage from "../ErrorMessage";
 
@@ -52,14 +53,15 @@ export const SINGLE_CULTIVATION_AREA = gql`
   }
 `;
 
-export default function SingleCultivationArea({ id, t }) {
+export default function SingleCultivationArea({ id }) {
+  const { t } = useTranslation();
   const { data, loading, error } = useQuery(SINGLE_CULTIVATION_AREA, {
     variables: {
       id,
     },
   });
   if (loading) return <h3>{t.loading}...</h3>;
-  if (error) return <ErrorMessage error={error} t={t} />;
+  if (error) return <ErrorMessage error={error} />;
   const { CultivationArea } = data;
   return (
     <CultivationAreaStyles>

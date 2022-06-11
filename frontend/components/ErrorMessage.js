@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import { useTranslation } from "../lib/getTranslation";
 
 import PropTypes from "prop-types";
 
@@ -18,7 +19,8 @@ const ErrorStyles = styled.div`
   }
 `;
 
-const ErrorMessage = ({ error, t }) => {
+const ErrorMessage = ({ error }) => {
+  const { t } = useTranslation();
   if (!error || !error.message) return null;
   if (
     error.networkError &&

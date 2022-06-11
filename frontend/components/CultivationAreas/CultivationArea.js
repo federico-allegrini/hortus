@@ -4,9 +4,11 @@ import ItemStyles from "../styles/ItemStyles";
 import Title from "../styles/Title";
 import SizeTag from "../styles/SizeTag";
 import { blurDataURL_CultivationArea } from "../../config";
+import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 
-export default function CultivationArea({ cultivationArea, t }) {
+export default function CultivationArea({ cultivationArea }) {
+  const { t } = useTranslation();
   return (
     <ItemStyles>
       <div className="image-div">

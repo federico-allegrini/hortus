@@ -1,5 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import useForm from "../../lib/useForm";
+import { useTranslation } from "../../lib/getTranslation";
 import Form from "../styles/Form";
 import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
 import Router from "next/router";
@@ -47,7 +48,9 @@ const CREATE_CULTIVATION_AREA_IMAGE_MUTATION = gql`
   }
 `;
 
-export default function CreateCultivationArea({ t }) {
+export default function CreateCultivationArea() {
+  const { t } = useTranslation();
+
   const { inputs, handleChange, resetForm, clearForm } = useForm({
     name: "Area",
     description: "...",
@@ -102,8 +105,8 @@ export default function CreateCultivationArea({ t }) {
         });
       }}
     >
-      <ErrorMessage error={error} t={t} />
-      <ErrorMessage error={errorImage} t={t} />
+      <ErrorMessage error={error} />
+      <ErrorMessage error={errorImage} />
       <fieldset
         disabled={loading || loadingImage}
         aria-busy={loading || loadingImage}

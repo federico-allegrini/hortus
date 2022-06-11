@@ -4,6 +4,7 @@ import { SINGLE_CULTIVATION_AREA } from "./SingleCultivationArea";
 import Form from "../styles/Form";
 import ErrorMessage from "../ErrorMessage";
 import useForm from "../../lib/useForm";
+import { useTranslation } from "../../lib/getTranslation";
 
 const UPDATE_CULTIVATION_AREA_MUTATION = gql`
   mutation UPDATE_CULTIVATION_AREA_MUTATION(
@@ -34,7 +35,9 @@ const UPDATE_CULTIVATION_AREA_MUTATION = gql`
   }
 `;
 
-export default function UpdateCultivationArea({ id, t }) {
+export default function UpdateCultivationArea({ id }) {
+  const { t } = useTranslation();
+
   const { data, error, loading } = useQuery(SINGLE_CULTIVATION_AREA, {
     variables: { id: id },
   });
@@ -75,8 +78,8 @@ export default function UpdateCultivationArea({ id, t }) {
       <h1>
         {t.updateCultivationArea} <span>{inputs.name}</span>
       </h1>
-      <ErrorMessage error={error} t={t} />
-      <ErrorMessage error={updateError} t={t} />
+      <ErrorMessage error={error} />
+      <ErrorMessage error={updateError} />
       <fieldset
         disabled={loading || updateLoading}
         aria-busy={loading || updateLoading}

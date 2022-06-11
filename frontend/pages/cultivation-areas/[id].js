@@ -1,5 +1,5 @@
 import SingleCultivationArea from "../../components/CultivationAreas/SingleCultivationArea";
 
-export default function SingleCultivationAreaPage({ query, t }) {
-  return <SingleCultivationArea id={query.id} t={t} />;
+export default function SingleCultivationAreaPage({ query }) {
+  return <SingleCultivationArea id={query.id} />;
 }

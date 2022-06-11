@@ -2,7 +2,22 @@ import { useRouter } from "next/router";
 
 function changeLanguage(e, router) {
   const locale = e.target.value;
-  router.push(router.pathname, router.pathname, { locale });
+  const queryParams = Object.entries(router.query);
+  if (queryParams.length > 0) {
+    const query = queryParams.reduce(
+      (acc, params) => ({ ...acc, [params[0]]: params[1] }),
+      {}
+    );
+    router.push(
+      { pathname: router.pathname, query },
+      { pathname: router.pathname },
+      {
+        locale,
+      }
+    );
+  } else {
+    router.push(router.pathname, router.pathname, { locale });
+  }
 }
 
 export default function LanguageSelector() {
