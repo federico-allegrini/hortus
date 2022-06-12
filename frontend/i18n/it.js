@@ -16,6 +16,7 @@ export default {
   loading: "Caricamento",
   edit: "Modifica",
   update: "Aggiorna",
+  delete: "Elimina",
   activeM: "Attivo",
   activeF: "Attiva",
   // Links
@@ -27,4 +28,5 @@ export default {
   myCultivationAreas: "Le mie aree di coltivazione",
   createArea: "Crea area",
   updateCultivationArea: "Aggiorna area di coltivazione",
+  deleteCultivationArea: "Vuoi davvero eliminare quest'area di coltivazione?",
 };

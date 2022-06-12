@@ -6,6 +6,7 @@ import SizeTag from "../styles/SizeTag";
 import { blurDataURL_CultivationArea } from "../../config";
 import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
+import DeleteCultivationArea from "./DeleteCultivationArea";
 
 export default function CultivationArea({ cultivationArea }) {
   const { t } = useTranslation();
@@ -43,6 +44,9 @@ export default function CultivationArea({ cultivationArea }) {
         >
           {t.edit + " ✏️"}
         </Link>
+        <DeleteCultivationArea id={cultivationArea.id}>
+          {t.delete + " ❌"}
+        </DeleteCultivationArea>
       </div>
     </ItemStyles>
   );

@@ -32,8 +32,11 @@ const ItemStyles = styled.div`
       font-size: 1rem;
       padding: 1rem;
     }
-    a {
+    a,
+    button {
+      text-align: center;
       font-weight: bold;
+      cursor: pointer;
       &:hover {
         text-decoration: none;
         color: var(--green);

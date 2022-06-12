@@ -16,6 +16,7 @@ export default {
   loading: "Loading",
   edit: "Edit",
   update: "Update",
+  delete: "Delete",
   activeM: "Active",
   activeF: "Active",
   // Links
@@ -27,4 +28,5 @@ export default {
   myCultivationAreas: "My Cultivation areas",
   createArea: "Create area",
   updateCultivationArea: "Update cultivation area",
+  deleteCultivationArea: "Are you sure to delete this cultivation area?",
 };
