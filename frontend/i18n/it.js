@@ -19,9 +19,15 @@ export default {
   delete: "Elimina",
   activeM: "Attivo",
   activeF: "Attiva",
+  page: "Pagina",
+  of: "Di",
+  total: "Totali",
+  prev: "Precedente",
+  next: "Successiva",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",
+  pageLink: "page",
   // Cultivation Areas
   cultivationAreas: "Aree di coltivazione",
   createNewCultivationArea: "Crea nuova area",

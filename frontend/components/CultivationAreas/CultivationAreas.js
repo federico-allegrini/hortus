@@ -3,10 +3,11 @@ import { useTranslation } from "../../lib/getTranslation";
 import CultivationArea from "./CultivationArea";
 import ErrorMessage from "../ErrorMessage";
 import styled from "styled-components";
+import { perPage } from "../../config";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
-  query ALL_CULTIVATION_AREAS_QUERY {
-    allCultivationAreas {
+  query ALL_CULTIVATION_AREAS_QUERY($skip: Int = 0, $first: Int) {
+    allCultivationAreas(skip: $skip, first: $first) {
       id
       name
       description
@@ -29,9 +30,14 @@ const CultivationAreasStyles = styled.div`
   grid-gap: 60px;
 `;
 
-export default function CultivationAreas() {
+export default function CultivationAreas({ page }) {
   const { t } = useTranslation();
-  const { data, loading, error } = useQuery(ALL_CULTIVATION_AREAS_QUERY);
+  const { data, loading, error } = useQuery(ALL_CULTIVATION_AREAS_QUERY, {
+    variables: {
+      skip: page * perPage - perPage,
+      first: perPage,
+    },
+  });
   if (loading) return <h3>{t.loading}...</h3>;
   if (error) return <ErrorMessage error={error} />;
   return (
