@@ -3,6 +3,8 @@ import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
 import withApollo from "next-with-apollo";
 import { endpoint, prodEndpoint } from "../config";
+import paginationField from "./paginationField";
+import { CULTIVATION_AREAS_PAGINATION_QUERY } from "../pages/cultivation-areas";
 
 function createClient({ headers, initialState }) {
   return new ApolloClient({
@@ -30,7 +32,11 @@ function createClient({ headers, initialState }) {
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
-          fields: {},
+          fields: {
+            allCultivationAreas: paginationField(
+              CULTIVATION_AREAS_PAGINATION_QUERY
+            ),
+          },
         },
       },
     }).restore(initialState || {}),

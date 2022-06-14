@@ -6,15 +6,7 @@ import ErrorMessage from "./ErrorMessage";
 import PaginationStyles from "./styles/PaginationStyles";
 import { perPage } from "../config";
 
-const PAGINATION_QUERY = gql`
-  query {
-    _allCultivationAreasMeta {
-      count
-    }
-  }
-`;
-
-export default function Pagination({ page, items, path }) {
+export default function Pagination({ page, items, path, PAGINATION_QUERY }) {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery(PAGINATION_QUERY);
   if (loading) return <h3>{t.loading}...</h3>;

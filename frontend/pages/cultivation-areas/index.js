@@ -1,8 +1,17 @@
+import { gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import ClientOnly from "../../components/ClientOnly";
 import CultivationAreas from "../../components/CultivationAreas/CultivationAreas";
 import Pagination from "../../components/Pagination";
 import { useTranslation } from "../../lib/getTranslation";
+
+export const CULTIVATION_AREAS_PAGINATION_QUERY = gql`
+  query CULTIVATION_AREAS_PAGINATION_QUERY {
+    _allCultivationAreasMeta {
+      count
+    }
+  }
+`;
 
 export default function AllCultivationAreas() {
   const { t } = useTranslation();
@@ -14,6 +23,7 @@ export default function AllCultivationAreas() {
         page={page}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
+        PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
       />
       <h1>{t.cultivationAreas}</h1>
       <ClientOnly>
@@ -23,6 +33,7 @@ export default function AllCultivationAreas() {
         page={page}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
+        PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
       />
     </div>
   );
