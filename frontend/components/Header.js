@@ -7,26 +7,44 @@ import SubBarStyles from "./styles/SubBarStyles";
 import { useUser } from "./User";
 
 const Logo = styled.h1`
-  font-size: 4rem;
+  font-size: 2.2rem;
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: var(--green);
+  background: var(--white);
+  border-radius: 10px;
+  border: 5px solid var(--green);
+  font-weight: 900;
+  box-shadow: var(--bs);
+  transition: all 0.3s;
+  &:hover,
+  &:focus {
+    background: var(--lightHavana);
+  }
   a {
-    color: white;
+    color: var(--green);
     text-decoration: none;
-    text-transform: uppercase;
+    font-family: "Gascogne Serial";
     padding: 0.5rem 1rem;
+    &:hover,
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
   }
 `;
 
 const HeaderStyles = styled.header`
   .bar {
-    border-bottom: 10px solid var(--black, black);
+    border: 3px solid var(--green);
+    margin: 15px;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
+    box-shadow: var(--bs);
+    background: var(--havana);
   }
 `;
 
