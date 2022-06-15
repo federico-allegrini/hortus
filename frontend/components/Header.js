@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useTranslation } from "../lib/getTranslation";
 import Nav from "./Nav";
 import SubBarStyles from "./styles/SubBarStyles";
+import { useUser } from "./User";
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -58,15 +59,16 @@ function getSubBarElements(router, t) {
 export default function Header() {
   const { t } = useTranslation();
   const router = useRouter();
+  const user = useUser();
   return (
     <HeaderStyles>
       <div className="bar">
         <Logo>
           <Link href="/">{t.logoName}</Link>
         </Logo>
-        <Nav />
+        <Nav user={user} />
       </div>
-      <SubBarStyles>{getSubBarElements(router, t)}</SubBarStyles>
+      {user && <SubBarStyles>{getSubBarElements(router, t)}</SubBarStyles>}
     </HeaderStyles>
   );
 }

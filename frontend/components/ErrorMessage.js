@@ -19,6 +19,12 @@ const ErrorStyles = styled.div`
   }
 `;
 
+function messageTranslation(message, t) {
+  return message
+    .replace("GraphQL error: ", "")
+    .replace("Authentication failed", t.authenticationFailed);
+}
+
 const ErrorMessage = ({ error }) => {
   const { t } = useTranslation();
   if (!error || !error.message) return null;
@@ -31,7 +37,7 @@ const ErrorMessage = ({ error }) => {
       <ErrorStyles key={i}>
         <p data-test="graphql-error">
           <strong>{t.error}!</strong>
-          {error.message.replace("GraphQL error: ", "")}
+          {messageTranslation(error.message, t)}
         </p>
       </ErrorStyles>
     ));
@@ -40,7 +46,7 @@ const ErrorMessage = ({ error }) => {
     <ErrorStyles>
       <p data-test="graphql-error">
         <strong>{t.error}!</strong>
-        {error.message.replace("GraphQL error: ", "")}
+        {messageTranslation(error.message, t)}
       </p>
     </ErrorStyles>
   );
