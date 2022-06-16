@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html {
     --green: #07503F;
-    --lightGreen: #0D9676;
+    --lightGreen: #6A968B;
     --red: #c62828;
     --yellow: #FADC15;
     --black: #393939;
@@ -26,12 +26,14 @@ const GlobalStyles = createGlobalStyle`
     --lightGrey: #e1e1e1;
     --lightGray: var(--lightGrey);
     --white: #ffffff;
+    --transparentWhite: rgba(255,255,255,0.75);
     --offWhite: #ededed;
     --havana: #E8E7DD;
-    --darkHavana: #d3d2bf;
-    --lightHavana: #F7F7F3;
+    --darkHavana: #d0cfc6;
+    --lightHavana: #F8f7f4;
     --maxWidth: 1250px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
+    --borderRadius: 10px;
     box-sizing: border-box;
   }
   *, *:before, *:after {
@@ -54,6 +56,11 @@ const GlobalStyles = createGlobalStyle`
   }
   button {
     font-family: 'Plain', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  h1 {
+    font-family: 'Gascogne Serial';
+    color: var(--green);
+    margin: 0;
   }
 `;
 

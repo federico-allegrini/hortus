@@ -8,6 +8,7 @@ export default {
   width: "Width",
   height: "Height",
   photos: "Photos",
+  uploadPhotos: "Upload photos",
   resetForm: "Reset form",
   clearForm: "Clear form",
   dimensions: "Dimensions",
