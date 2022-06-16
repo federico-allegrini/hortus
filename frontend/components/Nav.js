@@ -12,8 +12,6 @@ export default function Nav({ user }) {
         <>
           <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
           <SignOut />
-          <SignOut />
-          <SignOut />
         </>
       )}
       {!user && <Link href={`/${t.signInLink}`}>{t.signIn}</Link>}

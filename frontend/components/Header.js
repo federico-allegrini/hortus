@@ -7,12 +7,12 @@ import SubBarStyles from "./styles/SubBarStyles";
 import { useUser } from "./User";
 
 const Logo = styled.h1`
-  font-size: 2.2rem;
-  margin-left: 2rem;
+  font-size: 2rem;
+  margin: 1rem;
   position: relative;
   z-index: 2;
   background: var(--white);
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   border: 5px solid var(--green);
   font-weight: 900;
   box-shadow: var(--bs);
@@ -37,8 +37,8 @@ const Logo = styled.h1`
 const HeaderStyles = styled.header`
   .bar {
     border: 3px solid var(--green);
-    margin: 15px;
-    border-radius: 10px;
+    margin: 14px;
+    border-radius: var(--borderRadius);
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
@@ -58,7 +58,7 @@ function getSubBarElements(router, t) {
       elements = (
         <>
           <input
-            type={"search"}
+            type={"text"}
             placeholder={`${t.search} ${t.cultivationAreas.toLowerCase()}`}
           />
           <Link href={`/${t.createNewCultivationAreaLink}`}>
