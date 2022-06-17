@@ -1,21 +1,21 @@
 import styled, { keyframes } from "styled-components";
 
-const loading = keyframes`
-  from {
-    background-position: 0 0;
-    /* rotate: 0; */
+const progress = keyframes`
+  0%{
+    width: 2%;
+    background-color: var(--lightGreen);
   }
-
-  to {
-    background-position: 100% 100%;
-    /* rotate: 360deg; */
+  100%{
+      width: 100%;
+      background-color: var(--green);
   }
 `;
 
 const Form = styled.form`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  background: rgba(0, 0, 0, 0.02);
-  border: 5px solid white;
+  background: var(--havana);
+  border: 3px solid var(--green);
+  border-radius: var(--borderRadius);
   padding: 20px;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -23,6 +23,8 @@ const Form = styled.form`
   label {
     display: block;
     margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--green);
     span {
       font-size: 1.2rem;
       color: var(--green);
@@ -39,27 +41,59 @@ const Form = styled.form`
   select {
     width: 100%;
     padding: 0.5rem;
+    margin-top: 0.7rem;
     font-size: 1rem;
-    border: 1px solid black;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--bs);
+    color: var(--green);
     &:focus {
       outline: 0;
-      border-color: var(--green);
     }
   }
+  textarea {
+    resize: none;
+    width: 100%;
+  }
+  input[type="file"] {
+    display: none;
+  }
   button,
-  input[type="submit"] {
+  input[type="submit"],
+  .photosButton {
     width: auto;
     background: var(--green);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--bs);
     color: white;
     border: 0;
     font-size: 1.5rem;
     font-weight: 600;
+    font-family: "Gascogne Serial";
     padding: 0.5rem 1.2rem;
-    text-transform: uppercase;
-    margin: 5px 5px 5px 0;
+    margin: 10px 15px 5px 0;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
     &:hover {
       background: var(--lightGreen);
+      &:disabled {
+        background: var(--green);
+      }
+    }
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+  }
+  .photosButton {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 20px 0;
+    background: var(--white);
+    color: var(--green);
+    letter-spacing: 2px;
+    &:hover {
+      background: var(--lightHavana);
     }
   }
   input[type="checkbox"] {
@@ -74,19 +108,16 @@ const Form = styled.form`
       opacity: 0.5;
     }
     &::before {
-      height: 10px;
+      height: 6px;
       content: "";
       display: block;
-      background-image: linear-gradient(
-        to right,
-        var(--green) 0%,
-        var(--lightGreen) 50%,
-        var(--green) 100%
-      );
+      margin: auto;
+      box-shadow: var(--bs);
+      border-radius: var(--borderRadius);
+      background-color: var(--green);
     }
     &[aria-busy="true"]::before {
-      background-size: 50% auto;
-      animation: ${loading} 0.5s linear infinite;
+      animation: ${progress} 2s infinite alternate;
     }
   }
 `;
