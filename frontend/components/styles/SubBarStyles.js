@@ -17,13 +17,13 @@ const SubBarStyles = styled.div`
   select,
   option,
   input {
-    color: var(--havana);
+    color: var(--lightHavana);
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     position: relative;
     font-weight: 400;
-    font-size: 0.5em;
+    font-size: 0.7em;
     background: none;
     border: 0;
     cursor: pointer;
@@ -34,14 +34,14 @@ const SubBarStyles = styled.div`
     @media (max-width: 700px) {
       font-size: 15px;
       padding: 10px;
-      border-bottom: 1px solid var(--havana);
+      border-bottom: 2px solid var(--havana);
       width: 100%;
     }
     &:before {
       content: "";
-      width: 1px;
+      width: 3px;
       opacity: 0.8;
-      background: var(--havana);
+      background: var(--lightHavana);
       height: 102%;
       left: 0;
       position: absolute;
@@ -49,13 +49,13 @@ const SubBarStyles = styled.div`
       bottom: 0;
     }
     &:after {
-      height: 1px;
+      height: 1.8px;
       opacity: 0.8;
-      background: var(--havana);
+      background: var(--lightHavana);
       content: "";
       border-radius: var(--borderRadius);
       width: 82%;
-      margin-top: 2rem;
+      margin-top: 1.9rem;
       content: "";
       position: absolute;
       left: 9%;

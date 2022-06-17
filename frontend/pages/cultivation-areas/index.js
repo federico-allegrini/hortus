@@ -19,13 +19,13 @@ export default function AllCultivationAreas() {
   const page = parseInt(query.page) || 1;
   return (
     <div>
+      <h1>{t.cultivationAreas}</h1>
       <Pagination
         page={page}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
       />
-      <h1>{t.cultivationAreas}</h1>
       <ClientOnly>
         <CultivationAreas page={page} />
       </ClientOnly>

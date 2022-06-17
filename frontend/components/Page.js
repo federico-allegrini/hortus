@@ -61,6 +61,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Gascogne Serial';
     color: var(--green);
     margin: 0;
+    text-align: center ;
   }
 `;
 

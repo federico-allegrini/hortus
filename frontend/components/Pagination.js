@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "../lib/getTranslation";
@@ -13,6 +13,8 @@ export default function Pagination({ page, items, path, PAGINATION_QUERY }) {
   if (error) return <ErrorMessage error={error} />;
   const { count } = data._allCultivationAreasMeta;
   const pageCount = Math.ceil(count / perPage);
+  const deviceWidth = window.innerWidth > 0 ? window.innerWidth : screen.width;
+  const showLabel = deviceWidth > 1300;
   return (
     <PaginationStyles>
       <Head>
@@ -21,16 +23,22 @@ export default function Pagination({ page, items, path, PAGINATION_QUERY }) {
         </title>
       </Head>
       <Link href={`/${path}/${t.pageLink}/${page - 1}`}>
-        <a aria-disabled={page <= 1}>← {t.prev}</a>
+        <a aria-disabled={page <= 1}>{`↢ ${showLabel ? t.prev : ""}`}</a>
       </Link>
       <p>
-        {t.page} {page} {t.of.toLowerCase()} {pageCount}
+        {`${showLabel ? t.page : ""} ${page} ${
+          showLabel ? t.of.toLowerCase() : "|"
+        } ${pageCount}`}
       </p>
       <p>
-        {count} {items.toLowerCase()} {t.total.toLowerCase()}
+        {`${count} ${
+          showLabel ? items.toLowerCase() + " " + t.total.toLowerCase() : ""
+        }`}
       </p>
       <Link href={`/${path}/${t.pageLink}/${page + 1}`}>
-        <a aria-disabled={page >= pageCount}>{t.next} →</a>
+        <a aria-disabled={page >= pageCount}>
+          {`${showLabel ? t.next : ""} ↣`}
+        </a>
       </Link>
     </PaginationStyles>
   );
