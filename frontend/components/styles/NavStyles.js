@@ -10,17 +10,17 @@ const NavStyles = styled.ul`
   button,
   select,
   option {
-    color: var(--black);
-    padding: 1rem 3rem;
+    color: var(--green);
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     position: relative;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 1em;
+    font-weight: 400;
+    font-size: 0.8em;
     background: none;
     border: 0;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
     @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
@@ -28,48 +28,50 @@ const NavStyles = styled.ul`
     option {
       font-size: 0.7em;
     }
-    &:before {
-      content: "";
-      width: 2px;
-      background: var(--lightGray);
-      height: 100%;
-      left: 0;
-      position: absolute;
-      transform: skew(-20deg);
-      top: 0;
-      bottom: 0;
-    }
     &:after {
       height: 2px;
+      opacity: 0.8;
       background: var(--green);
       content: "";
-      width: 0;
-      position: absolute;
-      transform: translateX(-50%);
-      transition: width 0.4s;
-      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
-      left: 50%;
+      border-radius: var(--borderRadius);
+      width: 70%;
       margin-top: 2rem;
+      content: "";
+      position: absolute;
+      left: 15%;
+      pointer-events: none;
+      transform-origin: 100% 50%;
+      transform: scale3d(0, 1, 1);
+      transition: transform 0.3s ease-in-out;
     }
     &:hover,
     &:focus {
       outline: none;
       text-decoration: none;
       &:after {
-        width: calc(100% - 60px);
-      }
-      @media (max-width: 700px) {
-        width: calc(100% - 10px);
+        transform-origin: 0% 50%;
+        transform: scale3d(1, 1, 1);
+        transition: transform 0.3s ease-in-out;
       }
     }
   }
   select {
-    font-size: 0.9em;
+    font-size: 0.6em;
+    border-left: 3px solid var(--green);
+    font-weight: 600;
+    height: 101%;
+    font-family: 'Plain';
+    padding-right: 0px;
+    padding-left: 13px;
+    margin-right: 8px;
+    padding-top: 9px;
+    margin-left: 14px;
+}
+
   }
   @media (max-width: 1300px) {
-    border-top: 1px solid var(--lightGray);
     width: 100%;
-    justify-content: center;
+    justify-content: right;
     font-size: 1.5rem;
   }
 `;

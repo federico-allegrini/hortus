@@ -111,17 +111,6 @@ export default function CreateCultivationArea() {
         disabled={loading || loadingImage}
         aria-busy={loading || loadingImage}
       >
-        <label htmlFor="photos">
-          {t.photos}
-          <input
-            required
-            multiple
-            type="file"
-            name="photos"
-            id="photos"
-            onChange={handleChange}
-          />
-        </label>
         <label htmlFor="name">
           {t.name}
           <input
@@ -165,7 +154,18 @@ export default function CreateCultivationArea() {
             value={inputs.height}
           />
         </label>
-        <button type="subitm">+ {t.createArea}</button>
+        <label htmlFor="photos" className="photosButton">
+          {t.uploadPhotos}
+          <input
+            required
+            multiple
+            type="file"
+            name="photos"
+            id="photos"
+            onChange={handleChange}
+          />
+        </label>
+        <button type="subitm">{t.createArea}</button>
         <button type="button" onClick={resetForm}>
           {t.resetForm}
         </button>

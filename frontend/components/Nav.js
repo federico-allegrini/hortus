@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { useTranslation } from "../lib/getTranslation";
 import LanguageSelector from "./LanguageSelector";
+import SignOut from "./Authentication/SignOut";
 import NavStyles from "./styles/NavStyles";
 
-export default function Nav() {
+export default function Nav({ user }) {
   const { t } = useTranslation();
   return (
     <NavStyles>
-      <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
+      {user && (
+        <>
+          <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
+          <SignOut />
+        </>
+      )}
+      {!user && <Link href={`/${t.signInLink}`}>{t.signIn}</Link>}
       <LanguageSelector />
     </NavStyles>
   );
