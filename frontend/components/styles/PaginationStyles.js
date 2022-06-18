@@ -8,7 +8,6 @@ const PaginationStyles = styled.div`
   align-content: center;
   margin: 3rem auto;
   font-size: 0.7em;
-  border: 3px solid var(--green);
   color: var(--green);
   border-radius: var(--borderRadius);
   box-shadow: var(--bs);
@@ -20,11 +19,13 @@ const PaginationStyles = styled.div`
   & > * {
     margin: 0;
     padding: 0.5rem;
-    border-right: 3px solid var(--green);
     height: 100%;
     &:first-child {
       color: var(--white);
       border-radius: 6px 0 0 6px;
+    }
+    &:nth-child(2) {
+      border-right: 3px solid var(--lightGreen);
     }
     &:last-child {
       border-right: 0;

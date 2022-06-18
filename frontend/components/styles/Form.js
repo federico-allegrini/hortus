@@ -14,9 +14,8 @@ const progress = keyframes`
 const Form = styled.form`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
   background: var(--havana);
-  border: 3px solid var(--green);
   border-radius: var(--borderRadius);
-  padding: 20px;
+  padding: 40px 30px 20px 30px;
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;

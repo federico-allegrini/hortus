@@ -17,7 +17,7 @@ const SubBarStyles = styled.div`
   select,
   option,
   input {
-    color: var(--lightHavana);
+    color: var(--white);
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
@@ -34,15 +34,15 @@ const SubBarStyles = styled.div`
     @media (max-width: 700px) {
       font-size: 15px;
       padding: 10px;
-      border-bottom: 2px solid var(--havana);
+      border-bottom: 2px solid var(--white);
       width: 100%;
     }
     &:before {
       content: "";
-      width: 3px;
+      width: 2px;
       opacity: 0.8;
-      background: var(--lightHavana);
-      height: 102%;
+      background: var(--transparentWhite);
+      height: 100%;
       left: 0;
       position: absolute;
       top: 0;
@@ -51,7 +51,7 @@ const SubBarStyles = styled.div`
     &:after {
       height: 1.8px;
       opacity: 0.8;
-      background: var(--lightHavana);
+      background: var(--white);
       content: "";
       border-radius: var(--borderRadius);
       width: 82%;

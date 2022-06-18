@@ -57,7 +57,7 @@ const NavStyles = styled.ul`
   }
   select {
     font-size: 0.6em;
-    border-left: 3px solid var(--green);
+    border-left: 3px solid var(--darkHavana);
     font-weight: 600;
     height: 101%;
     font-family: 'Plain';

@@ -42,10 +42,10 @@ export default function CultivationArea({ cultivationArea }) {
             },
           }}
         >
-          {t.edit + " ✏️"}
+          {t.edit}
         </Link>
         <DeleteCultivationArea id={cultivationArea.id}>
-          {t.delete + " ❌"}
+          {t.delete}
         </DeleteCultivationArea>
       </div>
     </ItemStyles>

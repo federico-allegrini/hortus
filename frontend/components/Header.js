@@ -36,7 +36,6 @@ const Logo = styled.h1`
 
 const HeaderStyles = styled.header`
   .bar {
-    border: 3px solid var(--green);
     margin: 14px;
     border-radius: var(--borderRadius);
     display: grid;
