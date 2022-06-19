@@ -1,7 +1,18 @@
+import styled from "styled-components";
 import SignIn from "../components/Authentication/SignIn";
-import { useTranslation } from "../lib/getTranslation";
+import SignUp from "../components/Authentication/SignUp";
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+`;
 
 export default function SignInPage() {
-  const { t } = useTranslation();
-  return <SignIn />;
+  return (
+    <Grid>
+      <SignIn />
+      <SignUp />
+    </Grid>
+  );
 }

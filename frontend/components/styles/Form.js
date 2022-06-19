@@ -35,6 +35,21 @@ const Form = styled.form`
       color: var(--green);
     }
   }
+  h2 {
+    color: var(--green);
+    margin-top: 0;
+  }
+  & > p {
+    color: var(--green);
+    background: var(--darkHavana);
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    span {
+      color: var(--lightGreen);
+    }
+  }
   input,
   textarea,
   select {
