@@ -39,7 +39,7 @@ const Form = styled.form`
     color: var(--green);
     margin-top: 0;
   }
-  & > p {
+  fieldset > p {
     color: var(--green);
     background: var(--darkHavana);
     padding: 0.5rem;

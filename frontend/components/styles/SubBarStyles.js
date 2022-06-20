@@ -54,11 +54,11 @@ const SubBarStyles = styled.div`
       background: var(--white);
       content: "";
       border-radius: var(--borderRadius);
-      width: 82%;
-      margin-top: 1.9rem;
+      width: 90%;
+      margin-top: 2rem;
       content: "";
       position: absolute;
-      left: 9%;
+      left: 5%;
       pointer-events: none;
       transform-origin: 100% 50%;
       transform: scale3d(0, 1, 1);

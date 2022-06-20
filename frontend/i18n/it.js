@@ -38,6 +38,16 @@ export default {
   signOut: "Esci",
   signedUpWith: "Registrazione avvenuta con",
   pleaseGoHaeadAndSignIn: "Ora puoi effettuare l'accesso",
+  requestReset: "Reimposta",
+  resetPassword: "Reimposta password",
+  resetYourPassword: "Reimposta la tua password",
+  reset: "Reimposta",
+  successReset: "Reimpostazione riuscita",
+  youCanNowSignIn: "Ora puoi effettuare l'accesso",
+  checkYourEmailForAResetLink:
+    "Controlla la tua e-mail per effettare la reimpostazione",
+  sorry: "Mi dispiace",
+  youMustSupplyAToken: "Devi fornire un token",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

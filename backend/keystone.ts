@@ -8,6 +8,7 @@ import CultivationArea from "./schemas/CultivationArea";
 import CultivationAreaImage from "./schemas/CultivationAreaImage";
 import User from "./schemas/User";
 import "dotenv/config";
+import sendPasswordResetEmail from "./lib/mail";
 
 const databaseURL =
   process.env.DATABASE_URL || "mongodb://localhost/keystone-hortus-test";
@@ -23,6 +24,11 @@ const { withAuth } = createAuth({
   secretField: "password",
   initFirstItem: {
     fields: ["name", "email", "password"],
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      sendPasswordResetEmail(args.token, args.identity);
+    },
   },
 });
 

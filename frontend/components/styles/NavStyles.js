@@ -34,11 +34,11 @@ const NavStyles = styled.ul`
       background: var(--green);
       content: "";
       border-radius: var(--borderRadius);
-      width: 70%;
-      margin-top: 2rem;
+      width: 90%;
+      margin-top: 2.5rem;
       content: "";
       position: absolute;
-      left: 15%;
+      left: 5%;
       pointer-events: none;
       transform-origin: 100% 50%;
       transform: scale3d(0, 1, 1);
