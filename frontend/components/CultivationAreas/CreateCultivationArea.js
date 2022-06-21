@@ -5,6 +5,7 @@ import Form from "../styles/Form";
 import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
+import { useUser } from "../User";
 
 const CREATE_CULTIVATION_AREA_MUTATION = gql`
   mutation CREATE_CULTIVATION_AREA_MUTATION(
@@ -14,6 +15,7 @@ const CREATE_CULTIVATION_AREA_MUTATION = gql`
     $height: Int!
     $photos: Upload!
     $altText: String!
+    $user: ID!
   ) {
     createCultivationArea(
       data: {
@@ -22,6 +24,7 @@ const CREATE_CULTIVATION_AREA_MUTATION = gql`
         width: $width
         height: $height
         photos: { create: { image: $photos, altText: $altText } }
+        user: { connect: { id: $user } }
       }
     ) {
       id
@@ -50,6 +53,7 @@ const CREATE_CULTIVATION_AREA_IMAGE_MUTATION = gql`
 
 export default function CreateCultivationArea() {
   const { t } = useTranslation();
+  const user = useUser();
 
   const { inputs, handleChange, resetForm, clearForm } = useForm({
     name: "Area",
@@ -78,6 +82,7 @@ export default function CreateCultivationArea() {
             ...inputs,
             photos,
             altText: `${altText}-1`,
+            user: user.id,
           },
           refetchQueries: [{ query: ALL_CULTIVATION_AREAS_QUERY }],
         };

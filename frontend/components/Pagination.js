@@ -6,9 +6,16 @@ import ErrorMessage from "./ErrorMessage";
 import PaginationStyles from "./styles/PaginationStyles";
 import { perPage } from "../config";
 
-export default function Pagination({ page, items, path, PAGINATION_QUERY }) {
+export default function Pagination({
+  page,
+  items,
+  path,
+  PAGINATION_QUERY,
+  user,
+}) {
   const { t } = useTranslation();
-  const { data, loading, error } = useQuery(PAGINATION_QUERY);
+  const variables = user ? { variables: { user: user?.id } } : {};
+  const { data, loading, error } = useQuery(PAGINATION_QUERY, variables);
   if (loading) return <h3>{t.loading}...</h3>;
   if (error) return <ErrorMessage error={error} />;
   const { count } = data._allCultivationAreasMeta;
