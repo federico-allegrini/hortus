@@ -10,6 +10,9 @@ export default function Nav({ user }) {
     <NavStyles>
       {user && (
         <>
+          <Link href={`/${t.userPageLink}`}>
+            <a className="user">{user.name}</a>
+          </Link>
           <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
           <SignOut />
         </>

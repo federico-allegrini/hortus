@@ -52,6 +52,7 @@ export default {
   createNewCultivationAreaLink: "cultivation-areas/create",
   pageLink: "page",
   signInLink: "signin",
+  userPageLink: "user",
   // Cultivation Areas
   cultivationAreas: "Cultivation areas",
   createNewCultivationArea: "Create new area",
@@ -59,4 +60,8 @@ export default {
   createArea: "Create area",
   updateCultivationArea: "Update cultivation area",
   deleteCultivationArea: "Are you sure to delete this cultivation area?",
+  // User
+  user: "User",
+  yourProfile: "Your profile",
+  userName: "Username",
 };

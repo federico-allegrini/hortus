@@ -6,6 +6,13 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  .user{
+    font-weight: 900;
+    &:after {
+      height: 2.2px;
+      opacity: 1;
+    }
+  }
   a,
   button,
   select,
