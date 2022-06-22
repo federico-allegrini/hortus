@@ -18,6 +18,7 @@ export default function AllCultivationAreas() {
   const { t } = useTranslation();
   const user = useUser();
   const { query } = useRouter();
+  const queryName = "_allCultivationAreasMeta";
   const page = parseInt(query.page) || 1;
   return (
     <div>
@@ -27,16 +28,18 @@ export default function AllCultivationAreas() {
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
+        queryName={queryName}
         user={user}
       />
       <ClientOnly>
-        <CultivationAreas page={page} />
+        <CultivationAreas page={page} user={user} />
       </ClientOnly>
       <Pagination
         page={page}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
+        queryName={queryName}
         user={user}
       />
     </div>

@@ -60,6 +60,7 @@ export default {
   createArea: "Create area",
   updateCultivationArea: "Update cultivation area",
   deleteCultivationArea: "Are you sure to delete this cultivation area?",
+  noCultivationAreasCreated: "No cultivation areas created",
   // User
   user: "User",
   yourProfile: "Your profile",

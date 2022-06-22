@@ -11,14 +11,18 @@ export default function Pagination({
   items,
   path,
   PAGINATION_QUERY,
+  queryName,
   user,
 }) {
   const { t } = useTranslation();
-  const variables = user ? { variables: { user: user?.id } } : {};
+  const variables = user
+    ? { variables: { user: user?.id }, fetchPolicy: "network-only" }
+    : {};
   const { data, loading, error } = useQuery(PAGINATION_QUERY, variables);
   if (loading) return <h3>{t.loading}...</h3>;
   if (error) return <ErrorMessage error={error} />;
-  const { count } = data._allCultivationAreasMeta;
+  const { count } = data[queryName];
+  if (count === 0) return null;
   const pageCount = Math.ceil(count / perPage);
   const deviceWidth = window.innerWidth > 0 ? window.innerWidth : screen.width;
   const showLabel = deviceWidth > 1300;

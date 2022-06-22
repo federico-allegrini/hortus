@@ -11,15 +11,19 @@ const CURRENT_USER_QUERY = gql`
           id
           name
           description
+          active
           width
           height
-          active
           photos {
+            id
             image {
               publicUrlTransformed
             }
             altText
           }
+        }
+        _cultivationAreaMeta {
+          count
         }
       }
     }

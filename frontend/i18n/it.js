@@ -61,6 +61,7 @@ export default {
   createArea: "Crea area",
   updateCultivationArea: "Aggiorna area di coltivazione",
   deleteCultivationArea: "Vuoi davvero eliminare quest'area di coltivazione?",
+  noCultivationAreasCreated: "Nessun'area di coltivazione creata",
   // User
   user: "Utente",
   yourProfile: "Il tuo profilo",
