@@ -9,13 +9,18 @@ const SIGN_OUT_MUTATION = gql`
   }
 `;
 
+async function signOutAndClearCache(signout, client) {
+  await signout();
+  client.resetStore();
+}
+
 export default function SignOut() {
   const { t } = useTranslation();
-  const [signout] = useMutation(SIGN_OUT_MUTATION, {
+  const [signout, { client }] = useMutation(SIGN_OUT_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   return (
-    <button type="button" onClick={signout}>
+    <button type="button" onClick={() => signOutAndClearCache(signout, client)}>
       {t.signOut}
     </button>
   );
