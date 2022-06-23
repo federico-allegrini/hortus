@@ -81,7 +81,12 @@ export default function CreateCultivationArea({ user }) {
               altText: `${altText}-1`,
               user: user.id,
             },
-            refetchQueries: [{ query: ALL_CULTIVATION_AREAS_QUERY }],
+            refetchQueries: [
+              {
+                query: ALL_CULTIVATION_AREAS_QUERY,
+                variables: { user: user.id },
+              },
+            ],
           };
           const res = await createCultivationArea(cultivationAreaPayload);
           const id = res.data.createCultivationArea.id;
