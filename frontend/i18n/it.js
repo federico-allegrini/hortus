@@ -48,6 +48,7 @@ export default {
     "Controlla la tua e-mail per effettare la reimpostazione",
   sorry: "Mi dispiace",
   youMustSupplyAToken: "Devi fornire un token",
+  toViewThisPage: "Per visualizzare questa pagina",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

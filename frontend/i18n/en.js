@@ -47,6 +47,7 @@ export default {
   checkYourEmailForAResetLink: "Check your email for a link",
   sorry: "Sorry",
   youMustSupplyAToken: "You must supply a token",
+  toViewThisPage: "To view this page",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

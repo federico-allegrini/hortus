@@ -4,7 +4,6 @@ import CultivationArea from "./CultivationArea";
 import ErrorMessage from "../ErrorMessage";
 import styled from "styled-components";
 import { perPage } from "../../config";
-import { useUser } from "../User";
 import Link from "next/link";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
@@ -68,14 +67,13 @@ const NoAreasStyles = styled.div`
   }
 `;
 
-export default function CultivationAreas({ page }) {
+export default function CultivationAreas({ page, user }) {
   const { t } = useTranslation();
-  const user = useUser();
   const { data, loading, error } = useQuery(ALL_CULTIVATION_AREAS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,
-      user: user?.id,
+      user: user.id,
     },
   });
   if (loading) return <h3>{t.loading}...</h3>;

@@ -16,7 +16,7 @@ export default function Pagination({
 }) {
   const { t } = useTranslation();
   const variables = user
-    ? { variables: { user: user?.id }, fetchPolicy: "network-only" }
+    ? { variables: { user: user.id }, fetchPolicy: "network-only" }
     : {};
   const { data, loading, error } = useQuery(PAGINATION_QUERY, variables);
   if (loading) return <h3>{t.loading}...</h3>;
