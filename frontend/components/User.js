@@ -7,24 +7,6 @@ const CURRENT_USER_QUERY = gql`
         id
         email
         name
-        cultivationArea {
-          id
-          name
-          description
-          active
-          width
-          height
-          photos {
-            id
-            image {
-              publicUrlTransformed
-            }
-            altText
-          }
-        }
-        _cultivationAreaMeta {
-          count
-        }
       }
     }
   }
