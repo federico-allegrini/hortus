@@ -5,8 +5,6 @@ import Form from "../styles/Form";
 import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
-import { useUser } from "../User";
-import SignInMessage from "../Authentication/SignInMessage";
 
 const CREATE_CULTIVATION_AREA_MUTATION = gql`
   mutation CREATE_CULTIVATION_AREA_MUTATION(
@@ -52,9 +50,8 @@ const CREATE_CULTIVATION_AREA_IMAGE_MUTATION = gql`
   }
 `;
 
-export default function CreateCultivationArea() {
+export default function CreateCultivationArea({ user }) {
   const { t } = useTranslation();
-  const user = useUser();
   const { inputs, handleChange, resetForm, clearForm } = useForm({
     name: "Area",
     description: "...",
@@ -62,12 +59,12 @@ export default function CreateCultivationArea() {
     height: 10,
     photos: "",
   });
+
   const [createCultivationArea, { loading, error }] = useMutation(
     CREATE_CULTIVATION_AREA_MUTATION
   );
   const [createCultivationAreaImage, { loadingImage, errorImage }] =
     useMutation(CREATE_CULTIVATION_AREA_IMAGE_MUTATION);
-  if (!user) return <SignInMessage />;
   return (
     <div>
       <h1>{t.createNewCultivationArea}</h1>

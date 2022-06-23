@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import SignInMessage from "../../components/Authentication/SignInMessage";
 import ClientOnly from "../../components/ClientOnly";
