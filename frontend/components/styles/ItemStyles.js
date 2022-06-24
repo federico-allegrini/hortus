@@ -41,6 +41,14 @@ const ItemStyles = styled.div`
       &:last-child {
         border-radius: 0 0 var(--borderRadius) 0;
       }
+      @media (max-width: 550px) {
+        &:first-child {
+          border-radius: 0 0 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+        }
+      }
     }
     a,
     button {

@@ -5,6 +5,7 @@ import ErrorMessage from "../ErrorMessage";
 import styled from "styled-components";
 import { perPage } from "../../config";
 import Link from "next/link";
+import Loader from "../Loader";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
   query ALL_CULTIVATION_AREAS_QUERY($skip: Int = 0, $first: Int, $user: ID!) {
@@ -34,6 +35,7 @@ const CultivationAreasStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
+  margin-bottom: 10px;
 `;
 
 const NoAreasStyles = styled.div`
@@ -76,7 +78,7 @@ export default function CultivationAreas({ page, user }) {
       user: user.id,
     },
   });
-  if (loading) return <h3>{t.loading}...</h3>;
+  if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const allCultivationAreas = data.allCultivationAreas;
   if (allCultivationAreas.length === 0)

@@ -6,6 +6,7 @@ import { blurDataURL_CultivationArea } from "../../config";
 import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import ErrorMessage from "../ErrorMessage";
+import Loader from "../Loader";
 
 const CultivationAreaStyles = styled.div`
   background: var(--havana);
@@ -101,7 +102,7 @@ export default function SingleCultivationArea({ id }) {
       id,
     },
   });
-  if (loading) return <h3>{t.loading}...</h3>;
+  if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const { CultivationArea } = data;
   return (

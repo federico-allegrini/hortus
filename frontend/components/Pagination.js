@@ -5,6 +5,7 @@ import { useTranslation } from "../lib/getTranslation";
 import ErrorMessage from "./ErrorMessage";
 import PaginationStyles from "./styles/PaginationStyles";
 import { perPage } from "../config";
+import Loader from "./Loader";
 
 export default function Pagination({
   page,
@@ -19,7 +20,7 @@ export default function Pagination({
     ? { variables: { user: user.id }, fetchPolicy: "network-only" }
     : {};
   const { data, loading, error } = useQuery(PAGINATION_QUERY, variables);
-  if (loading) return <h3>{t.loading}...</h3>;
+  if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const { count } = data[queryName];
   if (count === 0) return null;

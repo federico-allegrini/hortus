@@ -5,6 +5,7 @@ import Form from "../styles/Form";
 import ErrorMessage from "../ErrorMessage";
 import useForm from "../../lib/useForm";
 import { useTranslation } from "../../lib/getTranslation";
+import Loader from "../Loader";
 
 const UPDATE_CULTIVATION_AREA_MUTATION = gql`
   mutation UPDATE_CULTIVATION_AREA_MUTATION(
@@ -57,7 +58,7 @@ export default function UpdateCultivationArea({ id }) {
     }
   );
 
-  if (loading) return <h3>{t.loading}...</h3>;
+  if (loading) return <Loader />;
 
   return (
     <Form
