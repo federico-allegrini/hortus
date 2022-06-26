@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { perPage } from "../../config";
 import Link from "next/link";
 import Loader from "../Loader";
+import { useRouter } from "next/router";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
   query ALL_CULTIVATION_AREAS_QUERY($skip: Int = 0, $first: Int, $user: ID!) {
@@ -71,6 +72,7 @@ const NoAreasStyles = styled.div`
 
 export default function CultivationAreas({ page, user }) {
   const { t } = useTranslation();
+  const router = useRouter();
   const { data, loading, error } = useQuery(ALL_CULTIVATION_AREAS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
@@ -81,7 +83,7 @@ export default function CultivationAreas({ page, user }) {
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const allCultivationAreas = data.allCultivationAreas;
-  if (allCultivationAreas.length === 0)
+  if (allCultivationAreas.length === 0 && page === 1)
     return (
       <NoAreasStyles>
         <h3>{t.noCultivationAreasCreated}</h3>
@@ -90,6 +92,8 @@ export default function CultivationAreas({ page, user }) {
         </Link>
       </NoAreasStyles>
     );
+  else if (allCultivationAreas.length === 0 && page > 1)
+    router.push({ pathname: `/cultivation-areas` });
   return (
     <CultivationAreasStyles>
       {allCultivationAreas.map((cultivationArea) => (

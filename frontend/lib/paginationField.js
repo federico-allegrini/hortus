@@ -1,10 +1,17 @@
+import { CURRENT_USER_QUERY } from "../components/User";
+
 export default function paginationField(PAGINATION_QUERY) {
   return {
     keyArgs: false,
     read(existing = [], { args, cache }) {
       const { skip, first } = args;
-      const data = cache.readQuery({ query: PAGINATION_QUERY });
-      const count = data?._allProductsMeta?.count;
+      const dataUser = cache.readQuery({ query: CURRENT_USER_QUERY });
+      const id = dataUser?.authenticatedItem?.id;
+      const data = cache.readQuery({
+        query: PAGINATION_QUERY,
+        variables: { user: id },
+      });
+      const count = data?._allCultivationAreasMeta?.count;
       const page = skip / first + 1;
       const pages = Math.ceil(count / first);
       const items = existing.slice(skip, skip + first).filter((x) => x);
