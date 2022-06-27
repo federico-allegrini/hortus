@@ -10,12 +10,21 @@ const DELETE_CULTIVATION_AREA_MUTATION = gql`
   }
 `;
 
+const DELETE_CULTIVATION_AREA_IMAGES_MUTATION = gql`
+  mutation DELETE_CULTIVATION_AREA_IMAGES_MUTATION($ids: [ID!]) {
+    deleteCultivationAreaImages(ids: $ids) {
+      id
+    }
+  }
+`;
+
 function update(cache, payload) {
   cache.evict(cache.identify(payload.data.deleteCultivationArea));
 }
 
-export default function DeleteCultivationArea({ id, children }) {
+export default function DeleteCultivationArea({ id, photos, children }) {
   const { t } = useTranslation();
+  const photoIds = photos.map((photo) => photo.id);
   const [deleteCultivationArea, { loading }] = useMutation(
     DELETE_CULTIVATION_AREA_MUTATION,
     {
@@ -23,13 +32,23 @@ export default function DeleteCultivationArea({ id, children }) {
       update,
     }
   );
+  const [deleteCultivationAreaImages, { loadingImages }] = useMutation(
+    DELETE_CULTIVATION_AREA_IMAGES_MUTATION
+  );
   return (
     <button
       type="button"
       disabled={loading}
-      onClick={() => {
+      onClick={async () => {
         if (confirm(t.deleteCultivationArea)) {
-          deleteCultivationArea().catch((err) => alert(err.message));
+          try {
+            deleteCultivationArea();
+            deleteCultivationAreaImages({
+              variables: { ids: photoIds },
+            });
+          } catch (err) {
+            alert(err.message);
+          }
         }
       }}
     >

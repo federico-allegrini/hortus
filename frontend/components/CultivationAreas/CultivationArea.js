@@ -44,7 +44,10 @@ export default function CultivationArea({ cultivationArea }) {
         >
           {t.edit}
         </Link>
-        <DeleteCultivationArea id={cultivationArea.id}>
+        <DeleteCultivationArea
+          id={cultivationArea.id}
+          photos={cultivationArea.photos}
+        >
           {t.delete}
         </DeleteCultivationArea>
       </div>
