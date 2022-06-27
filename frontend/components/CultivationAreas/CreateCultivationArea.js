@@ -55,8 +55,8 @@ export default function CreateCultivationArea({ user }) {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
     name: "Area",
     description: "...",
-    width: 10,
-    height: 10,
+    width: 100,
+    height: 100,
     photos: "",
   });
 

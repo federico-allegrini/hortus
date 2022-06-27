@@ -71,7 +71,13 @@ const Form = styled.form`
     width: 100%;
   }
   input[type="file"] {
-    display: none;
+    height: 1px;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    width: 1px;
+    margin-right: -1px;
   }
   button,
   input[type="submit"],
