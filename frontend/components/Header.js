@@ -1,8 +1,10 @@
+import { gql } from "@apollo/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { useTranslation } from "../lib/getTranslation";
 import Nav from "./Nav";
+import Search from "./Search";
 import SubBarStyles from "./styles/SubBarStyles";
 import { useUser } from "./User";
 
@@ -50,14 +52,32 @@ const HeaderStyles = styled.header`
 function getSubBarElements(router, t) {
   const categoryPath = router.asPath.split("/")[1];
   let elements = null;
-  // TODO: Add new links
   switch (categoryPath) {
     case t.cultivationAreasLink:
-    default:
+      const CULTIVATION_AREAS_QUERY = gql`
+        query SEARCH_CULTIVATION_AREAS_QUERY($searchTerm: String!) {
+          searchTerms: allCultivationAreas(
+            where: {
+              OR: [
+                { name_contains_i: $searchTerm }
+                { description_contains_i: $searchTerm }
+              ]
+            }
+          ) {
+            id
+            name
+            photos {
+              image {
+                publicUrlTransformed
+              }
+            }
+          }
+        }
+      `;
       elements = (
         <>
-          <input
-            type={"text"}
+          <Search
+            query={CULTIVATION_AREAS_QUERY}
             placeholder={`${t.search} ${t.cultivationAreas.toLowerCase()}`}
           />
           <Link href={`/${t.createNewCultivationAreaLink}`}>
@@ -68,6 +88,9 @@ function getSubBarElements(router, t) {
           </Link>
         </>
       );
+      break;
+    default:
+      elements = null;
       break;
   }
   return elements;

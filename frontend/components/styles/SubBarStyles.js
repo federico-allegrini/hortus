@@ -103,8 +103,7 @@ const SubBarStyles = styled.div`
     font-size: 1.5rem;
     input {
       min-width: 322px;
-      margin-top: 8px;
-      padding-bottom: 16px;
+      height: 100%;
     }
   }
   @media (max-width: 700px) {

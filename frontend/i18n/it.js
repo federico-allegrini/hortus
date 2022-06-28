@@ -49,6 +49,7 @@ export default {
   sorry: "Mi dispiace",
   youMustSupplyAToken: "Devi fornire un token",
   toViewThisPage: "Per visualizzare questa pagina",
+  noItemsfoundFor: "Nessun elemento trovato per",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",
@@ -67,4 +68,7 @@ export default {
   user: "Utente",
   yourProfile: "Il tuo profilo",
   userName: "Nome utente",
+  // Home
+  welcomeInHortus: "Benvenuto/a in Hortus",
+  startFormYourCultivatonAreas: "Inizia dalle tue aree di coltivazione",
 };
