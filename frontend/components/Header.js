@@ -49,19 +49,20 @@ const HeaderStyles = styled.header`
   }
 `;
 
-function getSubBarElements(router, t) {
+function getSubBarElements(router, user, t) {
   const categoryPath = router.asPath.split("/")[1];
   let elements = null;
   switch (categoryPath) {
     case t.cultivationAreasLink:
-      const CULTIVATION_AREAS_QUERY = gql`
-        query SEARCH_CULTIVATION_AREAS_QUERY($searchTerm: String!) {
+      const SEARCH_CULTIVATION_AREAS_QUERY = gql`
+        query SEARCH_CULTIVATION_AREAS_QUERY($searchTerm: String!, $user: ID!) {
           searchTerms: allCultivationAreas(
             where: {
               OR: [
                 { name_contains_i: $searchTerm }
                 { description_contains_i: $searchTerm }
               ]
+              user: { id: $user }
             }
           ) {
             id
@@ -77,7 +78,9 @@ function getSubBarElements(router, t) {
       elements = (
         <>
           <Search
-            query={CULTIVATION_AREAS_QUERY}
+            query={SEARCH_CULTIVATION_AREAS_QUERY}
+            user={user}
+            redirectPath="/cultivation-areas"
             placeholder={`${t.search} ${t.cultivationAreas.toLowerCase()}`}
           />
           <Link href={`/${t.createNewCultivationAreaLink}`}>
@@ -108,7 +111,9 @@ export default function Header() {
         </Logo>
         <Nav user={user} />
       </div>
-      {user && <SubBarStyles>{getSubBarElements(router, t)}</SubBarStyles>}
+      {user && (
+        <SubBarStyles>{getSubBarElements(router, user, t)}</SubBarStyles>
+      )}
     </HeaderStyles>
   );
 }

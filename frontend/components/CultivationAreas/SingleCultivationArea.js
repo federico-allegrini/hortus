@@ -46,6 +46,9 @@ const CultivationAreaStyles = styled.div`
       &:last-child > * {
         border-radius: 0 0 var(--borderRadius) 0;
       }
+      &:first-child:last-child > * {
+        border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+      }
       @media (max-width: 700px) {
         &:first-child > * {
           border-radius: 0;

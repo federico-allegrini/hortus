@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "../lib/getTranslation";
 import { DropDown, DropDownItem, SearchStyles } from "./styles/DropDown";
 
-export default function Search({ query, placeholder }) {
+export default function Search({ query, placeholder, user, redirectPath }) {
   const { t } = useTranslation();
   const router = useRouter();
   const [findItems, { loading, data, error }] = useLazyQuery(query, {
@@ -24,20 +24,23 @@ export default function Search({ query, placeholder }) {
     highlightedIndex,
   } = useCombobox({
     items,
-    onInputValueChange() {
-      findItemsButChill({
-        variables: {
-          searchTerm: inputValue,
-        },
-      });
+    onInputValueChange({ inputValue }) {
+      variables.searchTerm = inputValue;
+      findItemsButChill({ variables });
     },
     onSelectedItemChange({ selectedItem }) {
       router.push({
-        pathname: `/cultivation-areas/${selectedItem.id}`,
+        pathname: `${redirectPath}/${selectedItem.id}`,
       });
     },
     itemToString: (item) => item?.name || "",
   });
+  const variables = {
+    searchTerm: inputValue,
+  };
+  if (user) {
+    variables.user = user.id;
+  }
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
@@ -61,6 +64,7 @@ export default function Search({ query, placeholder }) {
               <img
                 src={item.photos[0].image.publicUrlTransformed}
                 alt={item.name}
+                key={`img-${item.id}`}
                 width="50"
               />
               {item.name}
@@ -68,7 +72,8 @@ export default function Search({ query, placeholder }) {
           ))}
         {isOpen && !items.length && !loading && (
           <DropDownItem>
-            {t.sorry}, {t.noItemsfoundFor.toLowerCase()} "{inputValue}""
+            {t.sorry}, {t.noItemsfoundFor.toLowerCase()} &quot;{inputValue}
+            &quot;
           </DropDownItem>
         )}
       </DropDown>
