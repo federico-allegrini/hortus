@@ -56,6 +56,7 @@ export default {
   pageLink: "page",
   signInLink: "signin",
   userPageLink: "user",
+  cultivationPlotsLink: "cultivation-plots",
   // Cultivation Areas
   cultivationAreas: "Aree di coltivazione",
   createNewCultivationArea: "Crea nuova area",
@@ -71,4 +72,6 @@ export default {
   // Home
   welcomeInHortus: "Benvenuto/a in Hortus",
   startFormYourCultivatonAreas: "Inizia dalle tue aree di coltivazione",
+  // Cultivation Plots
+  cultivationPlots: "Parcelle di coltivazione",
 };
