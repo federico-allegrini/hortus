@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import styled, { createGlobalStyle } from "styled-components";
+import SignInMessage from "./Authentication/SignInMessage";
 import Header from "./Header";
+import { useUser } from "./User";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -72,11 +75,17 @@ const InnerStyles = styled.div`
 `;
 
 export default function Page({ children }) {
+  const user = useUser();
+  const router = useRouter();
   return (
     <div>
       <GlobalStyles />
       <Header />
-      <InnerStyles>{children}</InnerStyles>
+      {!user && router.pathname !== "/signin" ? (
+        <SignInMessage />
+      ) : (
+        <InnerStyles>{children}</InnerStyles>
+      )}
     </div>
   );
 }

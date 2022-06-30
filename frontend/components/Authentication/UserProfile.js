@@ -2,7 +2,6 @@ import Head from "next/head";
 import styled from "styled-components";
 import { useTranslation } from "../../lib/getTranslation";
 import { useUser } from "../User";
-import SignInMessage from "./SignInMessage";
 
 const UserProfileStyles = styled.div`
   background: var(--havana);
@@ -37,7 +36,6 @@ const UserProfileStyles = styled.div`
 export default function UserProfile() {
   const { t } = useTranslation();
   const user = useUser();
-  if (!user) return <SignInMessage />;
   return (
     <UserProfileStyles>
       <Head>

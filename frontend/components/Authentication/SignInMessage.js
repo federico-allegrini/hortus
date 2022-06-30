@@ -4,7 +4,7 @@ import { useTranslation } from "../../lib/getTranslation";
 
 const SignInMessageStyles = styled.div`
   display: block;
-  margin: 20px auto;
+  margin: 60px auto 20px auto;
   text-align: center;
   color: var(--green);
   a {

@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 import { useRouter } from "next/router";
-import SignInMessage from "../../components/Authentication/SignInMessage";
 import ClientOnly from "../../components/ClientOnly";
 import CultivationAreas from "../../components/CultivationAreas/CultivationAreas";
 import Pagination from "../../components/Pagination";
@@ -21,7 +20,6 @@ export default function AllCultivationAreas() {
   const { query } = useRouter();
   const queryName = "_allCultivationAreasMeta";
   const page = parseInt(query.page) || 1;
-  if (!user) return <SignInMessage />;
   return (
     <div>
       <h1>{t.cultivationAreas}</h1>
