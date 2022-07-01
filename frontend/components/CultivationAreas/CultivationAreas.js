@@ -93,7 +93,7 @@ export default function CultivationAreas({ page, user }) {
       </NoAreasStyles>
     );
   else if (allCultivationAreas.length === 0 && page > 1)
-    router.push({ pathname: `/cultivation-areas` });
+    router.push({ pathname: `/${t.cultivationAreasLink}` });
   return (
     <CultivationAreasStyles>
       {allCultivationAreas.map((cultivationArea) => (
