@@ -7,6 +7,7 @@ import { perPage } from "../../config";
 import Link from "next/link";
 import Loader from "../Loader";
 import { useRouter } from "next/router";
+import { NoItemsStyles } from "../styles/AllItemsStyles";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
   query ALL_CULTIVATION_AREAS_QUERY($skip: Int = 0, $first: Int, $user: ID!) {
@@ -39,37 +40,6 @@ const CultivationAreasStyles = styled.div`
   margin-bottom: 10px;
 `;
 
-const NoAreasStyles = styled.div`
-  display: block;
-  color: var(--lightGreen);
-  text-align: center;
-  a {
-    width: auto;
-    background: var(--green);
-    border-radius: var(--borderRadius);
-    box-shadow: var(--bs);
-    color: white;
-    border: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: "Gascogne Serial";
-    padding: 0.5rem 1.2rem;
-    margin: 10px 15px 5px 0;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    &:hover {
-      background: var(--lightGreen);
-      text-decoration: none;
-      &:disabled {
-        background: var(--green);
-      }
-    }
-    @media (max-width: 700px) {
-      width: 100%;
-    }
-  }
-`;
-
 export default function CultivationAreas({ page, user }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -85,12 +55,12 @@ export default function CultivationAreas({ page, user }) {
   const allCultivationAreas = data.allCultivationAreas;
   if (allCultivationAreas.length === 0 && page === 1)
     return (
-      <NoAreasStyles>
+      <NoItemsStyles>
         <h3>{t.noCultivationAreasCreated}</h3>
         <Link href={`/${t.createNewCultivationAreaLink}`}>
           {t.createNewCultivationArea}
         </Link>
-      </NoAreasStyles>
+      </NoItemsStyles>
     );
   else if (allCultivationAreas.length === 0 && page > 1)
     router.push({ pathname: `/${t.cultivationAreasLink}` });

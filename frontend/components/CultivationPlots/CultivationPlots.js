@@ -7,6 +7,7 @@
 // import Link from "next/link";
 // import Loader from "../Loader";
 // import { useRouter } from "next/router";
+// import { NoItemsStyles } from "../styles/AllItemsStyles";
 
 // // TODO: Write correct query with other fields and related area
 // export const ALL_CULTIVATION_PLOTS_QUERY = gql`
@@ -78,13 +79,13 @@
 //   const allCultivationPlots = data.allCultivationAreas;
 //   if (allCultivationPlots.length === 0 && page === 1)
 //     return (
-//       <NoPlotsStyles>
+//       <NoItemsStyles>
 //         {/* TODO: translation */}
 //         <h3>{t.noCultivationPlotsCreated}</h3>
 //         <Link href={`/${t.createNewCultivationPlotLink}`}>
 //           {t.createNewCultivationPlot}
 //         </Link>
-//       </NoPlotsStyles>
+//       </NoItemsStyles>
 //     );
 //   else if (allCultivationPlots.length === 0 && page > 1)
 //     router.push({ pathname: `/${t.cultivationPlotsLink}` });
