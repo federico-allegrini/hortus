@@ -56,6 +56,7 @@ export default {
   signInLink: "signin",
   userPageLink: "user",
   cultivationPlotsLink: "cultivation-plots",
+  createNewCultivationPlotLink: "cultivation-plots/create",
   // Cultivation Areas
   cultivationAreas: "Cultivation areas",
   createNewCultivationArea: "Create new area",
@@ -64,6 +65,7 @@ export default {
   updateCultivationArea: "Update cultivation area",
   deleteCultivationArea: "Are you sure to delete this cultivation area?",
   noCultivationAreasCreated: "No cultivation areas created",
+  firstSelectACultivationArea: "First select a cultivation area",
   // User
   user: "User",
   yourProfile: "Your profile",
@@ -72,5 +74,7 @@ export default {
   welcomeInHortus: "Welcome in Hortus",
   startFormYourCultivatonAreas: "Start form your cultivaton areas",
   // Cultivation Plots
-  cultivationPlots: "Cultivation Plots",
+  cultivationPlots: "Cultivation plots",
+  createNewCultivationPlot: "Create new plot",
+  noCultivationPlotsCreated: "No cultivation plots created",
 };

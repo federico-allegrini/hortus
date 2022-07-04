@@ -17,6 +17,7 @@ export const CULTIVATION_AREAS_PAGINATION_QUERY = gql`
 export default function AllCultivationAreas() {
   const { t } = useTranslation();
   const user = useUser();
+  const variables = { user: user.id };
   const { query } = useRouter();
   const queryName = "_allCultivationAreasMeta";
   const page = parseInt(query.page) || 1;
@@ -29,7 +30,7 @@ export default function AllCultivationAreas() {
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
         queryName={queryName}
-        user={user}
+        variables={variables}
       />
       <ClientOnly>
         <CultivationAreas page={page} user={user} />
@@ -40,7 +41,7 @@ export default function AllCultivationAreas() {
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
         queryName={queryName}
-        user={user}
+        variables={variables}
       />
     </div>
   );

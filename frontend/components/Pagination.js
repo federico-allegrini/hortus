@@ -13,13 +13,13 @@ export default function Pagination({
   path,
   PAGINATION_QUERY,
   queryName,
-  user,
+  variables,
 }) {
   const { t } = useTranslation();
-  const variables = user
-    ? { variables: { user: user.id }, fetchPolicy: "network-only" }
+  const variablesObj = variables
+    ? { variables, fetchPolicy: "network-only" }
     : {};
-  const { data, loading, error } = useQuery(PAGINATION_QUERY, variables);
+  const { data, loading, error } = useQuery(PAGINATION_QUERY, variablesObj);
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const { count } = data[queryName];

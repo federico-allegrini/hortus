@@ -57,6 +57,7 @@ export default {
   signInLink: "signin",
   userPageLink: "user",
   cultivationPlotsLink: "cultivation-plots",
+  createNewCultivationPlotLink: "cultivation-plots/create",
   // Cultivation Areas
   cultivationAreas: "Aree di coltivazione",
   createNewCultivationArea: "Crea nuova area",
@@ -65,6 +66,7 @@ export default {
   updateCultivationArea: "Aggiorna area di coltivazione",
   deleteCultivationArea: "Vuoi davvero eliminare quest'area di coltivazione?",
   noCultivationAreasCreated: "Nessun'area di coltivazione creata",
+  firstSelectACultivationArea: "Selezionare prima un'area di coltivazione",
   // User
   user: "Utente",
   yourProfile: "Il tuo profilo",
@@ -74,4 +76,6 @@ export default {
   startFormYourCultivatonAreas: "Inizia dalle tue aree di coltivazione",
   // Cultivation Plots
   cultivationPlots: "Parcelle di coltivazione",
+  createNewCultivationPlot: "Crea nuova parcella",
+  noCultivationPlotsCreated: "Nessuna parcella di coltivazione creata",
 };

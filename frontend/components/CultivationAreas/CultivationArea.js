@@ -24,6 +24,7 @@ export default function CultivationArea({ cultivationArea }) {
         />
       </div>
       <Title>
+        {/* TODO: translation link */}
         <Link href={`/cultivation-areas/${cultivationArea.id}`}>
           {cultivationArea.name}
         </Link>
@@ -32,8 +33,22 @@ export default function CultivationArea({ cultivationArea }) {
         {formatSize(cultivationArea.width, "m")}x
         {formatSize(cultivationArea.height, "m", true, true)}
       </SizeTag>
-      <p>{cultivationArea.description}</p>
+      <p>
+        {cultivationArea.description}
+        <br></br>
+        <Link
+          href={{
+            pathname: "cultivation-plots",
+            query: {
+              "cultivation-area-id": cultivationArea.id,
+            },
+          }}
+        >
+          {t.cultivationPlots}
+        </Link>
+      </p>
       <div className="buttonList">
+        {/* TODO: translation link */}
         <Link
           href={{
             pathname: "cultivation-areas/update",

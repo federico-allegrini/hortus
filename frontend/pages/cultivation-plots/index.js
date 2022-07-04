@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import ClientOnly from "../../components/ClientOnly";
 import CultivationPlots from "../../components/CultivationPlots/CultivationPlots";
 import Pagination from "../../components/Pagination";
-import { useUser } from "../../components/User";
 import { useTranslation } from "../../lib/getTranslation";
 
 export const CULTIVATION_PLOTS_PAGINATION_QUERY = gql`
-  query CULTIVATION_PLOTS_PAGINATION_QUERY($user: ID!) {
-    _allCultivationPlotsMeta(where: { user: { id: $user } }) {
+  query CULTIVATION_PLOTS_PAGINATION_QUERY($cultivationArea: ID!) {
+    _allCultivationPlotsMeta(
+      where: { cultivationArea: { id: $cultivationArea } }
+    ) {
       count
     }
   }
@@ -16,10 +17,16 @@ export const CULTIVATION_PLOTS_PAGINATION_QUERY = gql`
 
 export default function AllCultivationPlots() {
   const { t } = useTranslation();
-  const user = useUser();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const queryName = "_allCultivationPlotsMeta";
   const page = parseInt(query.page) || 1;
+  const cultivationAreaId = query["cultivation-area-id"];
+  if (!cultivationAreaId) {
+    alert(t.firstSelectACultivationArea);
+    push({ pathname: `/${t.cultivationAreasLink}` });
+    return null;
+  }
+  const variables = { cultivationArea: cultivationAreaId };
   return (
     <div>
       <h1>{t.cultivationPlots}</h1>
@@ -29,10 +36,10 @@ export default function AllCultivationPlots() {
         items={t.cultivationPlots}
         PAGINATION_QUERY={CULTIVATION_PLOTS_PAGINATION_QUERY}
         queryName={queryName}
-        user={user}
+        variables={variables}
       />
       <ClientOnly>
-        <CultivationPlots page={page} user={user} />
+        <CultivationPlots page={page} cultivationArea={cultivationAreaId} />
       </ClientOnly>
       <Pagination
         page={page}
@@ -40,7 +47,7 @@ export default function AllCultivationPlots() {
         items={t.cultivationPlots}
         PAGINATION_QUERY={CULTIVATION_PLOTS_PAGINATION_QUERY}
         queryName={queryName}
-        user={user}
+        variables={variables}
       />
     </div>
   );

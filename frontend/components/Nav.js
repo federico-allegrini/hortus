@@ -14,7 +14,6 @@ export default function Nav({ user }) {
             <a className="user">{user.name}</a>
           </Link>
           <Link href={`/${t.cultivationAreasLink}`}>{t.cultivationAreas}</Link>
-          <Link href={`/${t.cultivationPlotsLink}`}>{t.cultivationPlots}</Link>
           <SignOut />
         </>
       )}
