@@ -6,6 +6,7 @@ import {
 import { createAuth } from "@keystone-next/auth";
 import CultivationArea from "./schemas/CultivationArea";
 import CultivationAreaImage from "./schemas/CultivationAreaImage";
+import CultivationPlot from "./schemas/CultivationPlot";
 import User from "./schemas/User";
 import "dotenv/config";
 import sendPasswordResetEmail from "./lib/mail";
@@ -48,6 +49,7 @@ export default withAuth(
       User,
       CultivationArea,
       CultivationAreaImage,
+      CultivationPlot,
     }),
     ui: {
       isAccessAllowed: ({ session }) => !!session?.data,

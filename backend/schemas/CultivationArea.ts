@@ -34,5 +34,9 @@ export default list({
         inlineEdit: { fields: ["image", "altText"] },
       },
     }),
+    cultivationPlot: relationship({
+      ref: "CultivationPlot.cultivationArea",
+      many: true,
+    }),
   },
 });
