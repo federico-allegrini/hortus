@@ -108,7 +108,7 @@ export default function CreateCultivationArea({ user }) {
           clearForm();
           // Go to cultivation area's page
           Router.push({
-            pathname: `/cultivation-areas/${id}`,
+            pathname: `/${t.cultivationAreasLink}/${id}`,
           });
         }}
       >

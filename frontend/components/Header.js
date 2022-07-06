@@ -80,7 +80,7 @@ function getSubBarElements(router, user, t) {
           <Search
             query={SEARCH_CULTIVATION_AREAS_QUERY}
             user={user}
-            redirectPath="/cultivation-areas"
+            redirectPath={`${t.cultivationAreasLink}`}
             placeholder={`${t.search} ${t.cultivationAreas.toLowerCase()}`}
           />
           <Link href={`/${t.createNewCultivationAreaLink}`}>

@@ -24,8 +24,7 @@ export default function CultivationArea({ cultivationArea }) {
         />
       </div>
       <Title>
-        {/* TODO: translation link */}
-        <Link href={`/cultivation-areas/${cultivationArea.id}`}>
+        <Link href={`/${t.cultivationAreasLink}/${cultivationArea.id}`}>
           {cultivationArea.name}
         </Link>
       </Title>
@@ -48,10 +47,9 @@ export default function CultivationArea({ cultivationArea }) {
         </Link>
       </p>
       <div className="buttonList">
-        {/* TODO: translation link */}
         <Link
           href={{
-            pathname: "cultivation-areas/update",
+            pathname: `${t.cultivationAreasLink}/update`,
             query: {
               id: cultivationArea.id,
             },

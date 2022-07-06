@@ -45,17 +45,15 @@ export default function CultivationPlots({ page, cultivationArea }) {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,
-      cultivationArea: cultivationArea,
+      cultivationArea,
     },
   });
-  console.log(page * perPage - perPage, perPage);
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const allCultivationPlots = data.allCultivationPlots;
   if (allCultivationPlots.length === 0 && page === 1)
     return (
       <NoItemsStyles>
-        {/* TODO: translation */}
         <h3>{t.noCultivationPlotsCreated}</h3>
         <Link href={`/${t.createNewCultivationPlotLink}`}>
           {t.createNewCultivationPlot}
