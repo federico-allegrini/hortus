@@ -59,6 +59,7 @@ export default {
   createNewCultivationPlotLink: "cultivation-plots/create",
   // Cultivation Areas
   cultivationAreas: "Cultivation areas",
+  cultivationArea: "Cultivation area",
   createNewCultivationArea: "Create new area",
   myCultivationAreas: "My Cultivation areas",
   createArea: "Create area",
@@ -75,6 +76,7 @@ export default {
   startFormYourCultivatonAreas: "Start form your cultivaton areas",
   // Cultivation Plots
   cultivationPlots: "Cultivation plots",
+  cultivationPlot: "Cultivation plot",
   createNewCultivationPlot: "Create new plot",
   noCultivationPlotsCreated: "No cultivation plots created",
 };

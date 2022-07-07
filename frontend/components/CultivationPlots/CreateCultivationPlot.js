@@ -2,28 +2,27 @@ import { gql, useMutation } from "@apollo/client";
 import useForm from "../../lib/useForm";
 import { useTranslation } from "../../lib/getTranslation";
 import Form from "../styles/Form";
-import { ALL_CULTIVATION_AREAS_QUERY } from "./CultivationAreas";
+import { ALL_CULTIVATION_PLOTS_QUERY } from "./CultivationPlots";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
 
-const CREATE_CULTIVATION_AREA_MUTATION = gql`
-  mutation CREATE_CULTIVATION_AREA_MUTATION(
+const CREATE_CULTIVATION_PLOT_MUTATION = gql`
+  mutation CREATE_CULTIVATION_PLOT_MUTATION(
     $name: String!
     $description: String!
     $width: Int!
     $height: Int!
-    $photos: Upload!
-    $altText: String!
-    $user: ID!
+    $type: String!
+    $cultivationArea: ID!
   ) {
-    createCultivationArea(
+    createCultivationPlot(
       data: {
         name: $name
         description: $description
         width: $width
         height: $height
-        photos: { create: { image: $photos, altText: $altText } }
-        user: { connect: { id: $user } }
+        type: $type
+        cultivationArea: { connect: { id: $cultivationArea } }
       }
     ) {
       id
@@ -32,92 +31,49 @@ const CREATE_CULTIVATION_AREA_MUTATION = gql`
   }
 `;
 
-const CREATE_CULTIVATION_AREA_IMAGE_MUTATION = gql`
-  mutation CREATE_CULTIVATION_AREA_IMAGE_MUTATION(
-    $photo: Upload!
-    $altText: String!
-    $cultivationAreaId: ID!
-  ) {
-    createCultivationAreaImage(
-      data: {
-        image: $photo
-        altText: $altText
-        cultivationArea: { connect: { id: $cultivationAreaId } }
-      }
-    ) {
-      id
-    }
-  }
-`;
-
-export default function CreateCultivationArea({ user }) {
+export default function CreateCultivationPlot({ cultivationArea }) {
   const { t } = useTranslation();
   const { inputs, handleChange, resetForm, clearForm } = useForm({
-    name: t.cultivationArea,
+    name: t.cultivationPlot,
     description: "...",
-    width: 100,
-    height: 100,
-    photos: "",
+    width: 20,
+    height: 20,
+    type: "GROUND",
   });
 
-  const [createCultivationArea, { loading, error }] = useMutation(
-    CREATE_CULTIVATION_AREA_MUTATION
+  const [createCultivationPlot, { loading, error }] = useMutation(
+    CREATE_CULTIVATION_PLOT_MUTATION
   );
-  const [createCultivationAreaImage, { loadingImage, errorImage }] =
-    useMutation(CREATE_CULTIVATION_AREA_IMAGE_MUTATION);
   return (
     <div>
-      <h1>{t.createNewCultivationArea}</h1>
+      {/* TODO: Translation */}
+      <h1>{t.createNewCultivationPlot}</h1>
       <Form
         onSubmit={async (e) => {
           e.preventDefault();
-          // Create area and upload first photo
-          const [photos] = inputs.photos;
-          let altText = inputs.name.toLowerCase().trim().replaceAll(" ", "-");
-          const cultivationAreaPayload = {
+          const cultivationPlotPayload = {
             variables: {
               ...inputs,
-              photos,
-              altText: `${altText}-1`,
-              user: user.id,
+              cultivationArea,
             },
             refetchQueries: [
               {
-                query: ALL_CULTIVATION_AREAS_QUERY,
-                variables: { user: user.id },
+                query: ALL_CULTIVATION_PLOTS_QUERY,
+                variables: { cultivationArea },
               },
             ],
           };
-          const res = await createCultivationArea(cultivationAreaPayload);
-          const id = res.data.createCultivationArea.id;
-          // Upload other photos and connect to area
-          const numerOfPhotos = inputs.photos.length;
-          if (numerOfPhotos > 1) {
-            // Start from 1 for skip the first photo: already uploaded
-            for (let i = 1; i < numerOfPhotos; i++) {
-              const cultivationAreaImagePayload = {
-                variables: {
-                  photo: inputs.photos[i],
-                  altText: `${altText}-${i + 1}`,
-                  cultivationAreaId: id,
-                },
-              };
-              await createCultivationAreaImage(cultivationAreaImagePayload);
-            }
-          }
+
           clearForm();
-          // Go to cultivation area's page
+          // Go to cultivation plot's page
+          // TODO: Continue here
           Router.push({
             pathname: `/${t.cultivationAreasLink}/${id}`,
           });
         }}
       >
         <ErrorMessage error={error} />
-        <ErrorMessage error={errorImage} />
-        <fieldset
-          disabled={loading || loadingImage}
-          aria-busy={loading || loadingImage}
-        >
+        <fieldset disabled={loading} aria-busy={loading}>
           <label htmlFor="name">
             {t.name}
             <input

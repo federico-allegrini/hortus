@@ -60,6 +60,7 @@ export default {
   createNewCultivationPlotLink: "cultivation-plots/create",
   // Cultivation Areas
   cultivationAreas: "Aree di coltivazione",
+  cultivationArea: "Area di coltivazione",
   createNewCultivationArea: "Crea nuova area",
   myCultivationAreas: "Le mie aree di coltivazione",
   createArea: "Crea area",
@@ -76,6 +77,7 @@ export default {
   startFormYourCultivatonAreas: "Inizia dalle tue aree di coltivazione",
   // Cultivation Plots
   cultivationPlots: "Parcelle di coltivazione",
+  cultivationPlot: "Parcella di coltivazione",
   createNewCultivationPlot: "Crea nuova parcella",
   noCultivationPlotsCreated: "Nessuna parcella di coltivazione creata",
 };
