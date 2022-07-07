@@ -7,6 +7,7 @@ import { blurDataURL_CultivationArea } from "../../config";
 import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import DeleteCultivationArea from "./DeleteCultivationArea";
+import { SmallButtonWhite } from "../styles/Button";
 
 export default function CultivationArea({ cultivationArea }) {
   const { t } = useTranslation();
@@ -34,17 +35,18 @@ export default function CultivationArea({ cultivationArea }) {
       </SizeTag>
       <p>
         {cultivationArea.description}
-        <br></br>
-        <Link
-          href={{
-            pathname: "cultivation-plots",
-            query: {
-              "cultivation-area-id": cultivationArea.id,
-            },
-          }}
-        >
-          {t.cultivationPlots}
-        </Link>
+        <SmallButtonWhite>
+          <Link
+            href={{
+              pathname: `/${t.cultivationPlotsLink}`,
+              query: {
+                "cultivation-area-id": cultivationArea.id,
+              },
+            }}
+          >
+            {t.cultivationPlots}
+          </Link>
+        </SmallButtonWhite>
       </p>
       <div className="buttonList">
         <Link

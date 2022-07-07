@@ -7,6 +7,8 @@ import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import ErrorMessage from "../ErrorMessage";
 import Loader from "../Loader";
+import Link from "next/link";
+import { SmallButtonGreen } from "../styles/Button";
 
 const CultivationAreaStyles = styled.div`
   background: var(--havana);
@@ -120,6 +122,19 @@ export default function SingleCultivationArea({ id }) {
           <br></br>
           {t.dimensions}: {formatSize(CultivationArea.width, "m")}x
           {formatSize(CultivationArea.height, "m", true, true)}
+          <br></br>
+          <SmallButtonGreen>
+            <Link
+              href={{
+                pathname: `/${t.cultivationPlotsLink}`,
+                query: {
+                  "cultivation-area-id": CultivationArea.id,
+                },
+              }}
+            >
+              {t.cultivationPlots}
+            </Link>
+          </SmallButtonGreen>
         </p>
       </div>
       <div className="image-parent">
