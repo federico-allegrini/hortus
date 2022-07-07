@@ -31,4 +31,11 @@ const NoItemsStyles = styled.div`
   }
 `;
 
-export { NoItemsStyles };
+const GridItemsStyles = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 60px;
+  margin-bottom: 10px;
+`;
+
+export { NoItemsStyles, GridItemsStyles };

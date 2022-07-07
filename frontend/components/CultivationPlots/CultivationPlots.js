@@ -7,7 +7,7 @@ import { perPage } from "../../config";
 import Link from "next/link";
 import Loader from "../Loader";
 import { useRouter } from "next/router";
-import { NoItemsStyles } from "../styles/AllItemsStyles";
+import { GridItemsStyles, NoItemsStyles } from "../styles/AllItemsStyles";
 
 export const ALL_CULTIVATION_PLOTS_QUERY = gql`
   query ALL_CULTIVATION_PLOTS_QUERY(
@@ -28,14 +28,6 @@ export const ALL_CULTIVATION_PLOTS_QUERY = gql`
       type
     }
   }
-`;
-
-// TODO: Same for areas and plots
-const CultivationPlotsStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  margin-bottom: 10px;
 `;
 
 export default function CultivationPlots({ page, cultivationArea }) {
@@ -63,13 +55,13 @@ export default function CultivationPlots({ page, cultivationArea }) {
   else if (allCultivationPlots.length === 0 && page > 1)
     router.push({ pathname: `/${t.cultivationPlotsLink}` });
   return (
-    <CultivationPlotsStyles>
+    <GridItemsStyles>
       {allCultivationPlots.map((cultivationPlot) => (
         <CultivationPlot
           key={cultivationPlot.id}
           cultivationPlot={cultivationPlot}
         />
       ))}
-    </CultivationPlotsStyles>
+    </GridItemsStyles>
   );
 }

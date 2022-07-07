@@ -7,7 +7,7 @@ import { perPage } from "../../config";
 import Link from "next/link";
 import Loader from "../Loader";
 import { useRouter } from "next/router";
-import { NoItemsStyles } from "../styles/AllItemsStyles";
+import { GridItemsStyles, NoItemsStyles } from "../styles/AllItemsStyles";
 
 export const ALL_CULTIVATION_AREAS_QUERY = gql`
   query ALL_CULTIVATION_AREAS_QUERY($skip: Int = 0, $first: Int, $user: ID!) {
@@ -31,13 +31,6 @@ export const ALL_CULTIVATION_AREAS_QUERY = gql`
       }
     }
   }
-`;
-
-const CultivationAreasStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  margin-bottom: 10px;
 `;
 
 export default function CultivationAreas({ page, user }) {
@@ -65,13 +58,13 @@ export default function CultivationAreas({ page, user }) {
   else if (allCultivationAreas.length === 0 && page > 1)
     router.push({ pathname: `/${t.cultivationAreasLink}` });
   return (
-    <CultivationAreasStyles>
+    <GridItemsStyles>
       {allCultivationAreas.map((cultivationArea) => (
         <CultivationArea
           key={cultivationArea.id}
           cultivationArea={cultivationArea}
         />
       ))}
-    </CultivationAreasStyles>
+    </GridItemsStyles>
   );
 }
