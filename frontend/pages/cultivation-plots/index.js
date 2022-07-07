@@ -20,7 +20,9 @@ export default function AllCultivationPlots() {
   const { query, push } = useRouter();
   const queryName = "_allCultivationPlotsMeta";
   const page = parseInt(query.page) || 1;
-  const cultivationAreaId = query["cultivation-area-id"];
+  const urlQueryName = "cultivation-area-id";
+  const cultivationAreaId = query[urlQueryName];
+  const queryParams = `${urlQueryName}=${cultivationAreaId}`;
   if (!cultivationAreaId) {
     alert(t.firstSelectACultivationArea);
     push({ pathname: `/${t.cultivationAreasLink}` });
@@ -37,6 +39,7 @@ export default function AllCultivationPlots() {
         PAGINATION_QUERY={CULTIVATION_PLOTS_PAGINATION_QUERY}
         queryName={queryName}
         variables={variables}
+        queryParams={queryParams}
       />
       <ClientOnly>
         <CultivationPlots page={page} cultivationArea={cultivationAreaId} />
@@ -48,6 +51,7 @@ export default function AllCultivationPlots() {
         PAGINATION_QUERY={CULTIVATION_PLOTS_PAGINATION_QUERY}
         queryName={queryName}
         variables={variables}
+        queryParams={queryParams}
       />
     </div>
   );

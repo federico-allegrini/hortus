@@ -14,6 +14,7 @@ export default function Pagination({
   PAGINATION_QUERY,
   queryName,
   variables,
+  queryParams,
 }) {
   const { t } = useTranslation();
   const variablesObj = variables
@@ -27,6 +28,7 @@ export default function Pagination({
   const pageCount = Math.ceil(count / perPage);
   const deviceWidth = window.innerWidth > 0 ? window.innerWidth : screen.width;
   const showLabel = deviceWidth > 1300;
+  const queryParamsUrl = queryParams ? `?${queryParams}` : "";
   return (
     <PaginationStyles>
       <Head>
@@ -34,7 +36,7 @@ export default function Pagination({
           Hortus - {items} - {t.page} {page} {t.of.toLowerCase()} {pageCount}
         </title>
       </Head>
-      <Link href={`/${path}/${t.pageLink}/${page - 1}`}>
+      <Link href={`/${path}/${t.pageLink}/${page - 1}${queryParamsUrl}`}>
         <a aria-disabled={page <= 1}>{`↢ ${showLabel ? t.prev : ""}`}</a>
       </Link>
       <p>
@@ -47,7 +49,7 @@ export default function Pagination({
           showLabel ? items.toLowerCase() + " " + t.total.toLowerCase() : ""
         }`}
       </p>
-      <Link href={`/${path}/${t.pageLink}/${page + 1}`}>
+      <Link href={`/${path}/${t.pageLink}/${page + 1}${queryParamsUrl}`}>
         <a aria-disabled={page >= pageCount}>
           {`${showLabel ? t.next : ""} ↣`}
         </a>
