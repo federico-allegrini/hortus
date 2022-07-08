@@ -135,6 +135,18 @@ export default function SingleCultivationArea({ id }) {
               {t.cultivationPlots}
             </Link>
           </SmallButtonGreen>
+          <SmallButtonGreen>
+            <Link
+              href={{
+                pathname: `/${t.cultivationPlotsLink}/create`,
+                query: {
+                  "cultivation-area-id": CultivationArea.id,
+                },
+              }}
+            >
+              {t.createNewPlot}
+            </Link>
+          </SmallButtonGreen>
         </p>
       </div>
       <div className="image-parent">

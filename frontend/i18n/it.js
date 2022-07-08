@@ -80,4 +80,12 @@ export default {
   cultivationPlot: "Parcella di coltivazione",
   createNewCultivationPlot: "Crea nuova parcella",
   noCultivationPlotsCreated: "Nessuna parcella di coltivazione creata",
+  type: "Tipo",
+  ground: "Terreno",
+  raisedBed: "Cassone rialzato",
+  pot: "Vaso",
+  planter: "Fioriera",
+  box: "Cassetta",
+  createPlot: "Crea parcella",
+  createNewPlot: "Crea nuova parcella",
 };

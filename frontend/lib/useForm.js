@@ -20,6 +20,9 @@ export default function useForm(initial = {}) {
       case "checkbox":
         value = e.target.checked;
         break;
+      case "radio":
+        value = e.target.value;
+        break;
     }
     setInputs({
       ...inputs,

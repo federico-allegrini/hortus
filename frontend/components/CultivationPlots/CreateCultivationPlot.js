@@ -5,6 +5,8 @@ import Form from "../styles/Form";
 import { ALL_CULTIVATION_PLOTS_QUERY } from "./CultivationPlots";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
+import { ListChoice, SelectStyles } from "../styles/SelectStyles";
+import { plotsType } from "../../config";
 
 const CREATE_CULTIVATION_PLOT_MUTATION = gql`
   mutation CREATE_CULTIVATION_PLOT_MUTATION(
@@ -46,7 +48,6 @@ export default function CreateCultivationPlot({ cultivationArea }) {
   );
   return (
     <div>
-      {/* TODO: Translation */}
       <h1>{t.createNewCultivationPlot}</h1>
       <Form
         onSubmit={async (e) => {
@@ -63,12 +64,12 @@ export default function CreateCultivationPlot({ cultivationArea }) {
               },
             ],
           };
-
+          const res = await createCultivationPlot(cultivationPlotPayload);
+          const id = res.data.createCultivationPlot.id;
           clearForm();
           // Go to cultivation plot's page
-          // TODO: Continue here
           Router.push({
-            pathname: `/${t.cultivationAreasLink}/${id}`,
+            pathname: `/${t.cultivationPlotsLink}/${id}`,
           });
         }}
       >
@@ -117,18 +118,23 @@ export default function CreateCultivationPlot({ cultivationArea }) {
               value={inputs.height}
             />
           </label>
-          <label htmlFor="photos" className="photosButton">
-            {t.uploadPhotos}
-            <input
-              required
-              multiple
-              type="file"
-              name="photos"
-              id="photos"
-              onChange={handleChange}
-            />
-          </label>
-          <button type="subitm">{t.createArea}</button>
+          <SelectStyles>
+            <div className="title">{t.type}</div>
+            <div className="objects">
+              {plotsType.map((plotType) => (
+                <label key={`label-${plotType.label}`}>
+                  <input
+                    type="radio"
+                    onChange={handleChange}
+                    name="type"
+                    value={plotType.value}
+                  />
+                  <span>{t[plotType.label]}</span>
+                </label>
+              ))}
+            </div>
+          </SelectStyles>
+          <button type="subitm">{t.createPlot}</button>
           <button type="button" onClick={resetForm}>
             {t.resetForm}
           </button>
