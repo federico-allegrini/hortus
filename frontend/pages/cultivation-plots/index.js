@@ -7,6 +7,7 @@ import Pagination from "../../components/Pagination";
 import { useTranslation } from "../../lib/getTranslation";
 import { useUser } from "../../components/User";
 import styled from "styled-components";
+import { perPagePots } from "../../config";
 
 export const CULTIVATION_PLOTS_PAGINATION_QUERY = gql`
   query CULTIVATION_PLOTS_PAGINATION_QUERY($cultivationArea: ID!) {
@@ -46,6 +47,7 @@ export default function AllCultivationPlots() {
       </ClientOnly>
       <Pagination
         page={page}
+        perPage={perPagePots}
         path={t.cultivationPlotsLink}
         items={t.cultivationPlots}
         PAGINATION_QUERY={CULTIVATION_PLOTS_PAGINATION_QUERY}

@@ -5,6 +5,7 @@ import CultivationAreas from "../../components/CultivationAreas/CultivationAreas
 import Pagination from "../../components/Pagination";
 import { useUser } from "../../components/User";
 import { useTranslation } from "../../lib/getTranslation";
+import { perPageArea } from "../../config";
 
 export const CULTIVATION_AREAS_PAGINATION_QUERY = gql`
   query CULTIVATION_AREAS_PAGINATION_QUERY($user: ID!) {
@@ -26,6 +27,7 @@ export default function AllCultivationAreas() {
       <h1>{t.cultivationAreas}</h1>
       <Pagination
         page={page}
+        perPage={perPageArea}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}
@@ -37,6 +39,7 @@ export default function AllCultivationAreas() {
       </ClientOnly>
       <Pagination
         page={page}
+        perPage={perPageArea}
         path={t.cultivationAreasLink}
         items={t.cultivationAreas}
         PAGINATION_QUERY={CULTIVATION_AREAS_PAGINATION_QUERY}

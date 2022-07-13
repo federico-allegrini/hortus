@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useTranslation } from "../lib/getTranslation";
 import ErrorMessage from "./ErrorMessage";
 import PaginationStyles from "./styles/PaginationStyles";
-import { perPage } from "../config";
 import Loader from "./Loader";
 
 export default function Pagination({
   page,
+  perPage,
   items,
   path,
   PAGINATION_QUERY,

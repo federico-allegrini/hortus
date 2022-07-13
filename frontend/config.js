@@ -1,6 +1,7 @@
 export const endpoint = `http://localhost:3000/api/graphql`;
 export const prodEndpoint = `-`;
-export const perPage = 2;
+export const perPageArea = 2;
+export const perPagePots = 4;
 export const plotsType = [
   { label: "ground", value: "GROUND" },
   { label: "raisedBed", value: "RAISED_BED" },

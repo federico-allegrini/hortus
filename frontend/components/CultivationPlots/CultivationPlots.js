@@ -2,8 +2,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useTranslation } from "../../lib/getTranslation";
 import CultivationPlot from "./CultivationPlot";
 import ErrorMessage from "../ErrorMessage";
-import styled from "styled-components";
-import { perPage } from "../../config";
+import { perPagePots } from "../../config";
 import Link from "next/link";
 import Loader from "../Loader";
 import { useRouter } from "next/router";
@@ -35,8 +34,8 @@ export default function CultivationPlots({ page, cultivationArea }) {
   const router = useRouter();
   const { data, loading, error } = useQuery(ALL_CULTIVATION_PLOTS_QUERY, {
     variables: {
-      skip: page * perPage - perPage,
-      first: perPage,
+      skip: page * perPagePots - perPagePots,
+      first: perPagePots,
       cultivationArea,
     },
   });
