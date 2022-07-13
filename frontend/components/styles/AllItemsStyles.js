@@ -36,6 +36,13 @@ const GridItemsStyles = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
   margin-bottom: 10px;
+  @media (max-width: 1300px) {
+    grid-gap: 30px;
+    grid-row-gap: 60px;
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export { NoItemsStyles, GridItemsStyles };

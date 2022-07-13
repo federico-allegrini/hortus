@@ -4,6 +4,7 @@ import Title from "../styles/Title";
 import SizeTag from "../styles/SizeTag";
 import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
+import truncateText from "../../lib/truncateText";
 
 // TODO: Create dynamic delete button
 // import DeleteButton from "./DeleteButton";
@@ -14,7 +15,7 @@ export default function CultivationPLot({ cultivationPlot }) {
     <ItemStyles>
       <Title>
         <Link href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}`}>
-          {cultivationPlot.name}
+          {truncateText(cultivationPlot.name)}
         </Link>
       </Title>
       <SizeTag>

@@ -8,6 +8,7 @@ import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import DeleteCultivationArea from "./DeleteCultivationArea";
 import { SmallButtonWhite } from "../styles/Button";
+import truncateText from "../../lib/truncateText";
 
 export default function CultivationArea({ cultivationArea }) {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ export default function CultivationArea({ cultivationArea }) {
       </div>
       <Title>
         <Link href={`/${t.cultivationAreasLink}/${cultivationArea.id}`}>
-          {cultivationArea.name}
+          {truncateText(cultivationArea.name)}
         </Link>
       </Title>
       <SizeTag>

@@ -14,6 +14,9 @@ const SizeTag = styled.span`
   right: -15px;
   border-radius: var(--borderRadius);
   box-shadow: var(--bs);
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
 export default SizeTag;

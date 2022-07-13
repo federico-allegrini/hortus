@@ -22,6 +22,12 @@ const Title = styled.h3`
       text-decoration: none;
       background: var(--lightGreen);
     }
+    @media (max-width: 1300px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 700px) {
+      font-size: 1.8rem;
+    }
   }
 `;
 
