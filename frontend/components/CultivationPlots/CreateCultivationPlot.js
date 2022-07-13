@@ -5,7 +5,6 @@ import Form from "../styles/Form";
 import { ALL_CULTIVATION_PLOTS_QUERY } from "./CultivationPlots";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
-import { ListChoice, SelectStyles } from "../styles/SelectStyles";
 import { plotsType } from "../../config";
 
 const CREATE_CULTIVATION_PLOT_MUTATION = gql`
@@ -118,22 +117,16 @@ export default function CreateCultivationPlot({ cultivationArea }) {
               value={inputs.height}
             />
           </label>
-          <SelectStyles>
-            <div className="title">{t.type}</div>
-            <div className="objects">
+          <label htmlFor="type">
+            {t.type}
+            <select onChange={handleChange} name="type" id="type">
               {plotsType.map((plotType) => (
-                <label key={`label-${plotType.label}`}>
-                  <input
-                    type="radio"
-                    onChange={handleChange}
-                    name="type"
-                    value={plotType.value}
-                  />
-                  <span>{t[plotType.label]}</span>
-                </label>
+                <option value={plotType.value} key={`label-${plotType.label}`}>
+                  {t[plotType.label]}
+                </option>
               ))}
-            </div>
-          </SelectStyles>
+            </select>
+          </label>
           <button type="subitm">{t.createPlot}</button>
           <button type="button" onClick={resetForm}>
             {t.resetForm}

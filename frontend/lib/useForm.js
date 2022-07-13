@@ -21,6 +21,7 @@ export default function useForm(initial = {}) {
         value = e.target.checked;
         break;
       case "radio":
+      case "select-one":
         value = e.target.value;
         break;
     }
