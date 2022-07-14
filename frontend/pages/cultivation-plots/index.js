@@ -8,6 +8,7 @@ import { useTranslation } from "../../lib/getTranslation";
 import { useUser } from "../../components/User";
 import styled from "styled-components";
 import { perPagePots } from "../../config";
+import alertRedirect from "../../lib/alertRedirect";
 
 export const CULTIVATION_PLOTS_PAGINATION_QUERY = gql`
   query CULTIVATION_PLOTS_PAGINATION_QUERY($cultivationArea: ID!) {
@@ -26,17 +27,20 @@ const PlotsTitleStyles = styled.h2`
 export default function AllCultivationPlots() {
   const { t } = useTranslation();
   const user = useUser();
-  const { query, push } = useRouter();
+  const { query } = useRouter();
   const queryName = "_allCultivationPlotsMeta";
   const page = parseInt(query.page) || 1;
   const urlQueryName = "cultivation-area-id";
   const cultivationAreaId = query[urlQueryName];
   const queryParams = `${urlQueryName}=${cultivationAreaId}`;
-  if (!cultivationAreaId) {
-    alert(t.firstSelectACultivationArea);
-    push({ pathname: `/${t.cultivationAreasLink}` });
+  if (
+    alertRedirect(
+      cultivationAreaId,
+      t.firstSelectACultivationArea,
+      `/${t.cultivationAreasLink}`
+    )
+  )
     return null;
-  }
   const variables = { cultivationArea: cultivationAreaId };
   return (
     <div>

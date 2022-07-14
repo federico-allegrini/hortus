@@ -68,6 +68,7 @@ export default {
   deleteCultivationArea: "Vuoi davvero eliminare quest'area di coltivazione?",
   noCultivationAreasCreated: "Nessun'area di coltivazione creata",
   firstSelectACultivationArea: "Selezionare prima un'area di coltivazione",
+  noCultivationAreasFound: "Nessun'area di coltivazione trovata",
   // User
   user: "Utente",
   yourProfile: "Il tuo profilo",

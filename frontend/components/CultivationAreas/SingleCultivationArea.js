@@ -9,6 +9,7 @@ import ErrorMessage from "../ErrorMessage";
 import Loader from "../Loader";
 import Link from "next/link";
 import { SmallButtonGreen } from "../styles/Button";
+import alertRedirect from "../../lib/alertRedirect";
 
 const CultivationAreaStyles = styled.div`
   background: var(--havana);
@@ -81,8 +82,10 @@ const CultivationAreaStyles = styled.div`
 `;
 
 export const SINGLE_CULTIVATION_AREA = gql`
-  query SINGLE_CULTIVATION_AREA($id: ID!) {
-    CultivationArea(where: { id: $id }) {
+  query SINGLE_CULTIVATION_AREA($id: ID!, $user: ID!) {
+    allCultivationAreas(
+      where: { AND: [{ id: $id }, { user: { id: $user } }] }
+    ) {
       id
       name
       description
@@ -100,16 +103,25 @@ export const SINGLE_CULTIVATION_AREA = gql`
   }
 `;
 
-export default function SingleCultivationArea({ id }) {
+export default function SingleCultivationArea({ id, user }) {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery(SINGLE_CULTIVATION_AREA, {
     variables: {
       id,
+      user: user.id,
     },
   });
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
-  const { CultivationArea } = data;
+  const [CultivationArea] = data.allCultivationAreas;
+  if (
+    alertRedirect(
+      CultivationArea,
+      t.noCultivationAreasFound,
+      `/${t.cultivationAreasLink}`
+    )
+  )
+    return null;
   return (
     <CultivationAreaStyles>
       <Head>

@@ -67,6 +67,7 @@ export default {
   deleteCultivationArea: "Are you sure to delete this cultivation area?",
   noCultivationAreasCreated: "No cultivation areas created",
   firstSelectACultivationArea: "First select a cultivation area",
+  noCultivationAreasFound: "No cultivation areas found",
   // User
   user: "User",
   yourProfile: "Your profile",
