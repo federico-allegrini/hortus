@@ -66,6 +66,7 @@ export default function CultivationPlots({ page, cultivationArea }) {
         <CultivationPlot
           key={cultivationPlot.id}
           cultivationPlot={cultivationPlot}
+          cultivationAreaId={cultivationArea}
         />
       ))}
     </GridItemsStyles>

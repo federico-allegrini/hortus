@@ -80,6 +80,7 @@ export default {
   cultivationPlot: "Cultivation plot",
   createNewCultivationPlot: "Create new plot",
   noCultivationPlotsCreated: "No cultivation plots created",
+  noCultivationPlotsFound: "No cultivation plots found",
   type: "Type",
   ground: "Ground",
   raisedBed: "Raised bed",

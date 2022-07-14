@@ -81,6 +81,7 @@ export default {
   cultivationPlot: "Parcella di coltivazione",
   createNewCultivationPlot: "Crea nuova parcella",
   noCultivationPlotsCreated: "Nessuna parcella di coltivazione creata",
+  noCultivationPlotsFound: "Nessuna parcella di coltivazione trovata",
   type: "Tipo",
   ground: "Terreno",
   raisedBed: "Cassone rialzato",

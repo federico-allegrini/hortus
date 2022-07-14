@@ -9,12 +9,17 @@ import truncateText from "../../lib/truncateText";
 // TODO: Create dynamic delete button
 // import DeleteButton from "./DeleteButton";
 
-export default function CultivationPLot({ cultivationPlot }) {
+export default function CultivationPLot({
+  cultivationPlot,
+  cultivationAreaId,
+}) {
   const { t } = useTranslation();
   return (
     <ItemStyles>
       <Title>
-        <Link href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}`}>
+        <Link
+          href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}?cultivation-area-id=${cultivationAreaId}`}
+        >
           {truncateText(cultivationPlot.name)}
         </Link>
       </Title>
