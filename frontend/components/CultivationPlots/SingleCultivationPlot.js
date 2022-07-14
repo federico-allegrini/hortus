@@ -79,12 +79,8 @@ const CultivationPlotStyles = styled.div`
 `;
 
 export const SINGLE_CULTIVATION_PLOT = gql`
-  query SINGLE_CULTIVATION_PLOT($id: ID!, $cultivationAreaId: ID!) {
-    allCultivationPlots(
-      where: {
-        AND: [{ id: $id }, { cultivationArea: { id: $cultivationAreaId } }]
-      }
-    ) {
+  query SINGLE_CULTIVATION_PLOT($id: ID!) {
+    allCultivationPlots(where: { id: $id }) {
       id
       name
       description
@@ -92,28 +88,29 @@ export const SINGLE_CULTIVATION_PLOT = gql`
       height
       type
       cultivationArea {
+        id
         name
+        user {
+          id
+        }
       }
     }
   }
 `;
 
-export default function SingleCultivationPlot({ id, cultivationAreaId }) {
+export default function SingleCultivationPlot({ id, user }) {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery(SINGLE_CULTIVATION_PLOT, {
-    variables: {
-      id,
-      cultivationAreaId,
-    },
+    variables: { id },
   });
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const [CultivationPlot] = data.allCultivationPlots;
   if (
     alertRedirect(
-      CultivationPlot,
+      !!CultivationPlot && CultivationPlot.cultivationArea.user.id === user.id,
       t.noCultivationPlotsFound,
-      `/${t.cultivationPlotsLink}?cultivation-area-id=${cultivationAreaId}`
+      `/${t.cultivationAreasLink}`
     )
   )
     return null;
@@ -130,7 +127,7 @@ export default function SingleCultivationPlot({ id, cultivationAreaId }) {
           {t.dimensions}: {formatSize(CultivationPlot.width, "m")}x
           {formatSize(CultivationPlot.height, "m", true, true)}
           <br></br>
-          {t.type}: {CultivationPlot.type}
+          {t.type}: {t[CultivationPlot.type.toLowerCase()]}
           <br></br>
           {t.cultivationArea}: {CultivationPlot.cultivationArea.name}
         </p>
