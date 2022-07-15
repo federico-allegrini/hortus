@@ -5,9 +5,7 @@ import SizeTag from "../styles/SizeTag";
 import { useTranslation } from "../../lib/getTranslation";
 import formatSize from "../../lib/formatSize";
 import truncateText from "../../lib/truncateText";
-
-// TODO: Create dynamic delete button
-// import DeleteButton from "./DeleteButton";
+import DeleteCultivationPlot from "./DeleteCultivationPLot";
 
 export default function CultivationPLot({
   cultivationPlot,
@@ -39,11 +37,9 @@ export default function CultivationPLot({
         >
           {t.edit}
         </Link>
-        {/* <DeleteButton
-          id={cultivationPlot.id}
-        >
+        <DeleteCultivationPlot id={cultivationPlot.id}>
           {t.delete}
-        </DeleteButton> */}
+        </DeleteCultivationPlot>
       </div>
     </ItemStyles>
   );
