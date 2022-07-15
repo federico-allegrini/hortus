@@ -5,6 +5,9 @@ const ItemStyles = styled.div`
   border-radius: var(--borderRadius);
   box-shadow: var(--bs);
   padding-top: 20px;
+  .details {
+    padding: 20px;
+  }
   h2 {
     font-family: "Gascogne Serial";
     text-align: center;

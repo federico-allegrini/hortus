@@ -66,31 +66,31 @@ export default function SingleCultivationArea({ id, user }) {
           {t.dimensions}: {formatSize(CultivationArea.width, "m")}x
           {formatSize(CultivationArea.height, "m", true, true)}
           <br></br>
-          <SmallButtonGreen>
-            <Link
-              href={{
-                pathname: `/${t.cultivationPlotsLink}`,
-                query: {
-                  "cultivation-area-id": CultivationArea.id,
-                },
-              }}
-            >
-              {t.cultivationPlots}
-            </Link>
-          </SmallButtonGreen>
-          <SmallButtonGreen>
-            <Link
-              href={{
-                pathname: `/${t.cultivationPlotsLink}/create`,
-                query: {
-                  "cultivation-area-id": CultivationArea.id,
-                },
-              }}
-            >
-              {t.createNewPlot}
-            </Link>
-          </SmallButtonGreen>
         </p>
+        <SmallButtonGreen>
+          <Link
+            href={{
+              pathname: `/${t.cultivationPlotsLink}`,
+              query: {
+                "cultivation-area-id": CultivationArea.id,
+              },
+            }}
+          >
+            {t.cultivationPlots}
+          </Link>
+        </SmallButtonGreen>
+        <SmallButtonGreen>
+          <Link
+            href={{
+              pathname: `/${t.cultivationPlotsLink}/create`,
+              query: {
+                "cultivation-area-id": CultivationArea.id,
+              },
+            }}
+          >
+            {t.createNewPlot}
+          </Link>
+        </SmallButtonGreen>
       </div>
       <div className="image-parent">
         {CultivationArea?.photos?.map((photo) => (

@@ -2,12 +2,13 @@ import styled, { css } from "styled-components";
 
 const baseButtonStyles = css`
   margin: 1rem 0;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
   z-index: 1;
   background: var(--green);
   border-radius: var(--borderRadius);
   box-shadow: var(--bs);
   transition: all 0.3s ease-in-out;
+  margin: 10px auto;
+  font-weight: 600;
   &:hover {
     background: var(--lightGreen);
   }
@@ -26,11 +27,11 @@ const baseButtonStyles = css`
   }
 `;
 
-const SmallButtonGreen = styled.h4`
+const SmallButtonGreen = styled.div`
   ${baseButtonStyles}
 `;
 
-const SmallButtonWhite = styled.h4`
+const SmallButtonWhite = styled.div`
   ${baseButtonStyles}
   background: var(--white);
   a {

@@ -34,21 +34,19 @@ export default function CultivationArea({ cultivationArea }) {
         {formatSize(cultivationArea.width, "m")}x
         {formatSize(cultivationArea.height, "m", true, true)}
       </SizeTag>
-      <p>
-        {cultivationArea.description}
-        <SmallButtonWhite>
-          <Link
-            href={{
-              pathname: `/${t.cultivationPlotsLink}`,
-              query: {
-                "cultivation-area-id": cultivationArea.id,
-              },
-            }}
-          >
-            {t.cultivationPlots}
-          </Link>
-        </SmallButtonWhite>
-      </p>
+      <p>{cultivationArea.description}</p>
+      <SmallButtonWhite>
+        <Link
+          href={{
+            pathname: `/${t.cultivationPlotsLink}`,
+            query: {
+              "cultivation-area-id": cultivationArea.id,
+            },
+          }}
+        >
+          {t.cultivationPlots}
+        </Link>
+      </SmallButtonWhite>
       <div className="buttonList">
         <Link
           href={{

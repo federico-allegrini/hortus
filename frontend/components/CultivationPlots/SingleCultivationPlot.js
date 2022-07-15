@@ -6,6 +6,8 @@ import Loader from "../Loader";
 import alertRedirect from "../../lib/alertRedirect";
 import formatSize from "../../lib/formatSize";
 import { ItemStyles } from "../styles/SingleItemStyles";
+import Link from "next/link";
+import { SmallButtonWhite } from "../styles/Button";
 
 export const SINGLE_CULTIVATION_PLOT = gql`
   query SINGLE_CULTIVATION_PLOT($id: ID!) {
@@ -58,8 +60,15 @@ export default function SingleCultivationPlot({ id, user }) {
           <br></br>
           {t.type}: {t[CultivationPlot.type.toLowerCase()]}
           <br></br>
-          {t.cultivationArea}: {CultivationPlot.cultivationArea.name}
+          {t.cultivationArea}:
         </p>
+        <SmallButtonWhite>
+          <Link
+            href={`/${t.cultivationPlotsLink}?cultivation-area-id=${CultivationPlot.cultivationArea.id}`}
+          >
+            {CultivationPlot.cultivationArea.name}
+          </Link>
+        </SmallButtonWhite>
       </div>
     </ItemStyles>
   );
