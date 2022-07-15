@@ -1,6 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
 import { useTranslation } from "../../lib/getTranslation";
 
+// TODO: Delete all related plots
+
 const DELETE_CULTIVATION_AREA_MUTATION = gql`
   mutation DELETE_CULTIVATION_AREA_MUTATION($id: ID!) {
     deleteCultivationArea(id: $id) {

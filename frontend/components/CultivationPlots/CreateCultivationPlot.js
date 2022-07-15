@@ -7,6 +7,8 @@ import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
 import { plotsType } from "../../config";
 
+// TODO: not show new created plot in list after creation
+
 const CREATE_CULTIVATION_PLOT_MUTATION = gql`
   mutation CREATE_CULTIVATION_PLOT_MUTATION(
     $name: String!
