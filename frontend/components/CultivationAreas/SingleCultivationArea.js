@@ -12,8 +12,6 @@ import { SmallButtonGreen } from "../styles/Button";
 import alertRedirect from "../../lib/alertRedirect";
 import { ItemStyles } from "../styles/SingleItemStyles";
 
-// TODO: check console error when enter the page
-
 export const SINGLE_CULTIVATION_AREA = gql`
   query SINGLE_CULTIVATION_AREA($id: ID!, $user: ID!) {
     allCultivationAreas(

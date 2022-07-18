@@ -1,14 +1,12 @@
-import { useRouter } from "next/router";
-
+import Router from "next/router";
 export default function AlertRedirect(
   fieldToCheck,
   alertMessage,
   redirectPath
 ) {
-  const { push } = useRouter();
   if (!fieldToCheck) {
     alert(alertMessage);
-    push({ pathname: redirectPath });
+    Router.push({ pathname: redirectPath });
     return true;
   }
   return false;
