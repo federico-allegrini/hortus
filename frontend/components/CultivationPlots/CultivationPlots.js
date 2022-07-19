@@ -38,6 +38,7 @@ export default function CultivationPlots({ page, cultivationArea }) {
       first: perPagePots,
       cultivationArea,
     },
+    fetchPolicy: "cache-and-network",
   });
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
