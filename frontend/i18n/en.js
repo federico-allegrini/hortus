@@ -57,6 +57,8 @@ export default {
   userPageLink: "user",
   cultivationPlotsLink: "cultivation-plots",
   createNewCultivationPlotLink: "cultivation-plots/create",
+  // Query
+  cultivationAreaId: "cultivation-area-id",
   // Cultivation Areas
   cultivationAreas: "Cultivation areas",
   cultivationArea: "Cultivation area",

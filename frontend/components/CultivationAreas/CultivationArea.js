@@ -40,7 +40,7 @@ export default function CultivationArea({ cultivationArea }) {
           href={{
             pathname: `/${t.cultivationPlotsLink}`,
             query: {
-              "cultivation-area-id": cultivationArea.id,
+              [t.cultivationAreaId]: cultivationArea.id,
             },
           }}
         >

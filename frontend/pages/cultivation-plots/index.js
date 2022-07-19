@@ -30,9 +30,9 @@ export default function AllCultivationPlots() {
   const { query } = useRouter();
   const queryName = "_allCultivationPlotsMeta";
   const page = parseInt(query.page) || 1;
-  const urlQueryName = "cultivation-area-id";
-  const cultivationAreaId = query[urlQueryName];
-  const queryParams = `${urlQueryName}=${cultivationAreaId}`;
+  const cultivationAreaId = query[t.cultivationAreaId];
+  const queryParams = `${t.cultivationAreaId}=${cultivationAreaId}`;
+  // TODO: Move the redirect inside CultivationPlots component, wrong queryParams cause an error in pagination
   if (
     alertRedirect(
       cultivationAreaId,

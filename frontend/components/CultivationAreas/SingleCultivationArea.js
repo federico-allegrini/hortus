@@ -72,7 +72,7 @@ export default function SingleCultivationArea({ id, user }) {
             href={{
               pathname: `/${t.cultivationPlotsLink}`,
               query: {
-                "cultivation-area-id": CultivationArea.id,
+                [t.cultivationAreaId]: CultivationArea.id,
               },
             }}
           >
@@ -84,7 +84,7 @@ export default function SingleCultivationArea({ id, user }) {
             href={{
               pathname: `/${t.cultivationPlotsLink}/create`,
               query: {
-                "cultivation-area-id": CultivationArea.id,
+                [t.cultivationAreaId]: CultivationArea.id,
               },
             }}
           >

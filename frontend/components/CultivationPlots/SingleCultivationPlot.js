@@ -64,7 +64,7 @@ export default function SingleCultivationPlot({ id, user }) {
         </p>
         <SmallButtonWhite>
           <Link
-            href={`/${t.cultivationPlotsLink}?cultivation-area-id=${CultivationPlot.cultivationArea.id}`}
+            href={`/${t.cultivationPlotsLink}?${t.cultivationAreaId}=${CultivationPlot.cultivationArea.id}`}
           >
             {CultivationPlot.cultivationArea.name}
           </Link>

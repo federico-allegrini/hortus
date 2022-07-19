@@ -48,7 +48,7 @@ export default function CultivationPlots({ page, cultivationArea }) {
       <NoItemsStyles>
         <h3>{t.noCultivationPlotsCreated}</h3>
         <Link
-          href={`/${t.createNewCultivationPlotLink}?cultivation-area-id=${cultivationArea}`}
+          href={`/${t.createNewCultivationPlotLink}?${t.cultivationAreaId}=${cultivationArea}`}
         >
           {t.createNewCultivationPlot}
         </Link>
@@ -58,7 +58,7 @@ export default function CultivationPlots({ page, cultivationArea }) {
     router.push({
       pathname: `/${t.cultivationPlotsLink}`,
       query: {
-        "cultivation-area-id": cultivationArea,
+        [t.cultivationAreaId]: cultivationArea,
       },
     });
   return (

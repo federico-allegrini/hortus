@@ -16,7 +16,7 @@ export default function CultivationPLot({
     <ItemStyles>
       <Title>
         <Link
-          href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}?cultivation-area-id=${cultivationAreaId}`}
+          href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}?${t.cultivationAreaId}=${cultivationAreaId}`}
         >
           {truncateText(cultivationPlot.name)}
         </Link>

@@ -7,9 +7,7 @@ import alertRedirect from "../../lib/alertRedirect";
 export default function CreateCultivationPlotPage() {
   const { t } = useTranslation();
   const { query } = useRouter();
-  // TODO: set cultivation-area-id into translation variables
-  const urlQueryName = "cultivation-area-id";
-  const cultivationAreaId = query[urlQueryName];
+  const cultivationAreaId = query[t.cultivationAreaId];
   if (
     alertRedirect(
       cultivationAreaId,
