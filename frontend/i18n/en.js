@@ -66,7 +66,8 @@ export default {
   myCultivationAreas: "My Cultivation areas",
   createArea: "Create area",
   updateCultivationArea: "Update cultivation area",
-  deleteCultivationArea: "Are you sure to delete this cultivation area?",
+  deleteCultivationArea:
+    "Are you sure to delete this cultivation area and its plots?",
   noCultivationAreasCreated: "No cultivation areas created",
   firstSelectACultivationArea: "First select a cultivation area",
   noCultivationAreasFound: "No cultivation areas found",

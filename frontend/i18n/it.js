@@ -67,7 +67,8 @@ export default {
   myCultivationAreas: "Le mie aree di coltivazione",
   createArea: "Crea area",
   updateCultivationArea: "Aggiorna area di coltivazione",
-  deleteCultivationArea: "Vuoi davvero eliminare quest'area di coltivazione?",
+  deleteCultivationArea:
+    "Vuoi davvero eliminare quest'area di coltivazione e le relative parcelle?",
   noCultivationAreasCreated: "Nessun'area di coltivazione creata",
   firstSelectACultivationArea: "Selezionare prima un'area di coltivazione",
   noCultivationAreasFound: "Nessun'area di coltivazione trovata",

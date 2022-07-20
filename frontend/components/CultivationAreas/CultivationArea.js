@@ -61,6 +61,7 @@ export default function CultivationArea({ cultivationArea }) {
         <DeleteCultivationArea
           id={cultivationArea.id}
           photos={cultivationArea.photos}
+          cultivationPlot={cultivationArea.cultivationPlot}
         >
           {t.delete}
         </DeleteCultivationArea>

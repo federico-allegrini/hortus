@@ -28,6 +28,9 @@ export const ALL_CULTIVATION_AREAS_QUERY = gql`
         }
         altText
       }
+      cultivationPlot {
+        id
+      }
     }
   }
 `;
