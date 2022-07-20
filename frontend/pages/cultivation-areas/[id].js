@@ -3,5 +3,6 @@ import { useUser } from "../../components/User";
 
 export default function SingleCultivationAreaPage({ query }) {
   const user = useUser();
-  return <SingleCultivationArea id={query.id} user={user} />;
+  const cultivationAreaId = query.id.padEnd(24, "0");
+  return <SingleCultivationArea id={cultivationAreaId} user={user} />;
 }
