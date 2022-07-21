@@ -1,4 +1,4 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import useForm from "../../lib/useForm";
 import { useTranslation } from "../../lib/getTranslation";
 import Form from "../styles/Form";
@@ -6,6 +6,8 @@ import { ALL_CULTIVATION_PLOTS_QUERY } from "./CultivationPlots";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
 import { plotsType } from "../../config";
+import { SINGLE_CULTIVATION_AREA } from "../CultivationAreas/SingleCultivationArea";
+import Loader from "../Loader";
 
 const CREATE_CULTIVATION_PLOT_MUTATION = gql`
   mutation CREATE_CULTIVATION_PLOT_MUTATION(
@@ -14,7 +16,7 @@ const CREATE_CULTIVATION_PLOT_MUTATION = gql`
     $width: Int!
     $height: Int!
     $type: String!
-    $cultivationArea: ID!
+    $cultivationAreaId: ID!
   ) {
     createCultivationPlot(
       data: {
@@ -23,7 +25,7 @@ const CREATE_CULTIVATION_PLOT_MUTATION = gql`
         width: $width
         height: $height
         type: $type
-        cultivationArea: { connect: { id: $cultivationArea } }
+        cultivationArea: { connect: { id: $cultivationAreaId } }
       }
     ) {
       id
@@ -32,19 +34,53 @@ const CREATE_CULTIVATION_PLOT_MUTATION = gql`
   }
 `;
 
-export default function CreateCultivationPlot({ cultivationArea }) {
+export default function CreateCultivationPlot({ cultivationAreaId, user }) {
   const { t } = useTranslation();
+  // Query for cultivation area data
+  const {
+    data,
+    loading: loadingCultivationArea,
+    error: errorCultivationArea,
+  } = useQuery(SINGLE_CULTIVATION_AREA, {
+    variables: {
+      id: cultivationAreaId,
+      user: user.id,
+    },
+  });
+  // Hook for form data
   const { inputs, handleChange, resetForm, clearForm } = useForm({
     name: t.cultivationPlot,
     description: "...",
     width: 20,
     height: 20,
-    type: "GROUND",
+    type: "GROUND", // TODO: add "walkway" type
+    // TODO: add "possibility of planting" here and in the backend (auto boolean yes if type is walkway)
+    // TODO: add "type of implant" here and in the backend (direct sowing, transplant)
   });
-
+  // Mutation for creation of cutlivation plot
   const [createCultivationPlot, { loading, error }] = useMutation(
     CREATE_CULTIVATION_PLOT_MUTATION
   );
+  if (loadingCultivationArea) return <Loader />;
+  if (errorCultivationArea) return <ErrorMessage error={error} />;
+  const [CultivationArea] = data.allCultivationAreas;
+  // TODO:
+  // Ask if auto plots creation in equal sizes
+  //
+  // If yes
+  // Ask many lines and plots per line
+  // Show only form with name and type
+  // Set vaiable multiple auto creation to true
+  // Calculate number of plots based on width and height
+  // Calculate width and height for every plot
+  // Insert in array
+  //
+  // If no
+  // Start while loops, while all area is full
+  // Show only form with all info but limited width and height (based on remaining area space)
+  // For each creation reduce the counter of area (width and height) with choosed plot creation
+  // When space is <=0.1M stop creation of plots and redirect
+
   return (
     <div>
       <h1>{t.createNewCultivationPlot}</h1>
@@ -54,12 +90,12 @@ export default function CreateCultivationPlot({ cultivationArea }) {
           const cultivationPlotPayload = {
             variables: {
               ...inputs,
-              cultivationArea,
+              cultivationAreaId,
             },
             refetchQueries: [
               {
                 query: ALL_CULTIVATION_PLOTS_QUERY,
-                variables: { cultivationArea },
+                variables: { cultivationArea: cultivationAreaId },
               },
             ],
           };

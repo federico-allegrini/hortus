@@ -106,9 +106,12 @@ export default function CreateCultivationArea({ user }) {
             }
           }
           clearForm();
-          // Go to cultivation area's page
+          // Go to cultivation plots creation page
           Router.push({
-            pathname: `/${t.cultivationAreasLink}/${id}`,
+            pathname: `/${t.createNewCultivationPlotLink}`,
+            query: {
+              [t.cultivationAreaId]: id,
+            },
           });
         }}
       >

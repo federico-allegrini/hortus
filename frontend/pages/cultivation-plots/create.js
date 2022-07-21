@@ -3,9 +3,11 @@ import CreateCultivationPlot from "../../components/CultivationPlots/CreateCulti
 import { useRouter } from "next/router";
 import { useTranslation } from "../../lib/getTranslation";
 import alertRedirect from "../../lib/alertRedirect";
+import { useUser } from "../../components/User";
 
 export default function CreateCultivationPlotPage() {
   const { t } = useTranslation();
+  const user = useUser();
   const { query } = useRouter();
   const cultivationAreaId = query[t.cultivationAreaId];
   if (
@@ -18,7 +20,10 @@ export default function CreateCultivationPlotPage() {
     return null;
   return (
     <ClientOnly>
-      <CreateCultivationPlot cultivationArea={cultivationAreaId} />
+      <CreateCultivationPlot
+        cultivationAreaId={cultivationAreaId}
+        user={user}
+      />
     </ClientOnly>
   );
 }

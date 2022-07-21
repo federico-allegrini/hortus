@@ -40,6 +40,7 @@ export default function CultivationPlots({ page, cultivationArea }) {
     },
     fetchPolicy: "cache-and-network",
   });
+  // TODO: insert tab system for view list and grid with area image and related plots
   if (loading) return <Loader />;
   if (error) return <ErrorMessage error={error} />;
   const allCultivationPlots = data.allCultivationPlots;
