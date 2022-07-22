@@ -53,7 +53,7 @@ export default function CreateCultivationPlot({ cultivationAreaId, user }) {
     description: "...",
     width: 20,
     height: 20,
-    type: "GROUND", // TODO: add "walkway" type
+    type: "GROUND",
     // TODO: add "possibility of planting" here and in the backend (auto boolean yes if type is walkway)
     // TODO: add "type of implant" here and in the backend (direct sowing, transplant)
   });

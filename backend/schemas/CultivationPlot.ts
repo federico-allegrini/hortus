@@ -18,6 +18,7 @@ export default list({
         { label: "Pot", value: "POT" },
         { label: "Planter", value: "PLANTER" },
         { label: "Box", value: "BOX" },
+        { label: "Walkway", value: "WALKWAY" },
       ],
       defaultValue: "GROUND",
       ui: {

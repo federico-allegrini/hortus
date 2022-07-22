@@ -91,6 +91,7 @@ export default {
   pot: "Pot",
   planter: "Planter",
   box: "Box",
+  walkway: "Walkway",
   createPlot: "Create plot",
   createNewPlot: "Create new plot",
 };

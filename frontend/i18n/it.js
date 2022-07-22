@@ -93,6 +93,7 @@ export default {
   pot: "Vaso",
   planter: "Fioriera",
   box: "Cassetta",
+  walkway: "Camminamento",
   createPlot: "Crea parcella",
   createNewPlot: "Crea nuova parcella",
 };
