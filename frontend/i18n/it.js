@@ -94,6 +94,9 @@ export default {
   planter: "Fioriera",
   box: "Cassetta",
   walkway: "Camminamento",
+  typeOfImplant: "Tipo d'impianto",
+  directSowing: "Semina diretta",
+  transplant: "Trapianto",
   createPlot: "Crea parcella",
   createNewPlot: "Crea nuova parcella",
 };

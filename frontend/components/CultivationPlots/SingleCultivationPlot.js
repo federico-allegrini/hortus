@@ -18,6 +18,7 @@ export const SINGLE_CULTIVATION_PLOT = gql`
       width
       height
       type
+      typeOfImplant
       cultivationArea {
         id
         name
@@ -59,6 +60,10 @@ export default function SingleCultivationPlot({ id, user }) {
           {formatSize(CultivationPlot.height, "m", true, true)}
           <br></br>
           {t.type}: {t[CultivationPlot.type.toLowerCase()]}
+          {/* //TODO: problem with translation, used value RAISED_BED, not label */}
+          <br></br>
+          {t.typeOfImplant}: {t[CultivationPlot.typeOfImplant.toLowerCase()]}{" "}
+          {/* //TODO: problem with translation, used value not label */}
           <br></br>
           {t.cultivationArea}:
         </p>

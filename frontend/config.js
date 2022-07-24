@@ -10,5 +10,9 @@ export const plotsType = [
   { label: "box", value: "BOX" },
   { label: "walkway", value: "WALKWAY" },
 ];
+export const plotsTypeOfImplant = [
+  { label: "directSowing", value: "DIRECT_SOWING" },
+  { label: "transplant", value: "TRANSPLANT" },
+];
 export const blurDataURL_CultivationArea =
   "https://res.cloudinary.com/federico-allegrini-dev/image/upload/v1654358076/hortus/2e7d32_y8pp3m.png";

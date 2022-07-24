@@ -25,6 +25,16 @@ export default list({
         displayMode: "segmented-control",
       },
     }),
+    typeOfImplant: select({
+      options: [
+        { label: "Direct Sowing", value: "DIRECT_SOWING" },
+        { label: "Transplant", value: "TRANSPLANT" },
+      ],
+      defaultValue: "TRANSPLANT",
+      ui: {
+        displayMode: "segmented-control",
+      },
+    }),
     cultivationArea: relationship({
       ref: "CultivationArea.cultivationPlot",
       ui: {

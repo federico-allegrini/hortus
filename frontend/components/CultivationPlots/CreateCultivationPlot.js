@@ -5,7 +5,7 @@ import Form from "../styles/Form";
 import { ALL_CULTIVATION_PLOTS_QUERY } from "./CultivationPlots";
 import Router from "next/router";
 import ErrorMessage from "../ErrorMessage";
-import { plotsType } from "../../config";
+import { plotsType, plotsTypeOfImplant } from "../../config";
 import { SINGLE_CULTIVATION_AREA } from "../CultivationAreas/SingleCultivationArea";
 import Loader from "../Loader";
 
@@ -54,8 +54,8 @@ export default function CreateCultivationPlot({ cultivationAreaId, user }) {
     width: 20,
     height: 20,
     type: "GROUND",
+    typeOfImplant: "TRANSPLANT",
     // TODO: add "possibility of planting" here and in the backend (auto boolean yes if type is walkway)
-    // TODO: add "type of implant" here and in the backend (direct sowing, transplant)
   });
   // Mutation for creation of cutlivation plot
   const [createCultivationPlot, { loading, error }] = useMutation(
@@ -159,6 +159,23 @@ export default function CreateCultivationPlot({ cultivationAreaId, user }) {
               {plotsType.map((plotType) => (
                 <option value={plotType.value} key={`label-${plotType.label}`}>
                   {t[plotType.label]}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="typeOfImplant">
+            {t.typeOfImplant}
+            <select
+              onChange={handleChange}
+              name="typeOfImplant"
+              id="typeOfImplant"
+            >
+              {plotsTypeOfImplant.map((plotTypeOfImplant) => (
+                <option
+                  value={plotTypeOfImplant.value}
+                  key={`label-${plotTypeOfImplant.label}`}
+                >
+                  {t[plotTypeOfImplant.label]}
                 </option>
               ))}
             </select>

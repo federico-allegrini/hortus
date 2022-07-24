@@ -92,6 +92,9 @@ export default {
   planter: "Planter",
   box: "Box",
   walkway: "Walkway",
+  typeOfImplant: "Type of implant",
+  directSowing: "Direct sowing",
+  transplant: "Transplant",
   createPlot: "Create plot",
   createNewPlot: "Create new plot",
 };
