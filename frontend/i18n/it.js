@@ -99,4 +99,5 @@ export default {
   transplant: "Trapianto",
   createPlot: "Crea parcella",
   createNewPlot: "Crea nuova parcella",
+  updateCultivationPlot: "Aggiorna parcella",
 };

@@ -97,4 +97,5 @@ export default {
   transplant: "Transplant",
   createPlot: "Create plot",
   createNewPlot: "Create new plot",
+  updateCultivationPlot: "Update cultivation plot",
 };

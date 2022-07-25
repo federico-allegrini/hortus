@@ -32,6 +32,7 @@ export default function CultivationPLot({
             pathname: `${t.cultivationPlotsLink}/update`,
             query: {
               id: cultivationPlot.id,
+              [t.cultivationAreaId]: cultivationAreaId,
             },
           }}
         >
