@@ -8,6 +8,7 @@ import formatSize from "../../lib/formatSize";
 import { ItemStyles } from "../styles/SingleItemStyles";
 import Link from "next/link";
 import { SmallButtonWhite } from "../styles/Button";
+import { plotsType, plotsTypeOfImplant } from "../../config";
 
 export const SINGLE_CULTIVATION_PLOT = gql`
   query SINGLE_CULTIVATION_PLOT($id: ID!) {
@@ -46,6 +47,14 @@ export default function SingleCultivationPlot({ id, user }) {
     )
   )
     return null;
+  // Get type label for transltion
+  const { label: translationType } = plotsType.find(
+    (plotType) => plotType.value === CultivationPlot.type
+  );
+  const { label: translationTypeOfImplant } = plotsTypeOfImplant.find(
+    (plotTypeOfImplant) =>
+      plotTypeOfImplant.value === CultivationPlot.typeOfImplant
+  );
   return (
     <ItemStyles>
       <Head>
@@ -59,11 +68,9 @@ export default function SingleCultivationPlot({ id, user }) {
           {t.dimensions}: {formatSize(CultivationPlot.width, "m")}x
           {formatSize(CultivationPlot.height, "m", true, true)}
           <br></br>
-          {t.type}: {t[CultivationPlot.type.toLowerCase()]}
-          {/* //TODO: problem with translation, used value RAISED_BED, not label */}
+          {t.type}: {t[translationType]}
           <br></br>
-          {t.typeOfImplant}: {t[CultivationPlot.typeOfImplant.toLowerCase()]}{" "}
-          {/* //TODO: problem with translation, used value not label */}
+          {t.typeOfImplant}: {t[translationTypeOfImplant]}
           <br></br>
           {t.cultivationArea}:
         </p>
