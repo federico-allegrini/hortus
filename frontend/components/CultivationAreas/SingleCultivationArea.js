@@ -30,6 +30,9 @@ export const SINGLE_CULTIVATION_AREA = gql`
           publicUrlTransformed
         }
       }
+      user {
+        id
+      }
     }
   }
 `;

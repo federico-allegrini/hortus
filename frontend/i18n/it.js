@@ -50,6 +50,7 @@ export default {
   youMustSupplyAToken: "Devi fornire un token",
   toViewThisPage: "Per visualizzare questa pagina",
   noItemsfoundFor: "Nessun elemento trovato per",
+  updateCompleted: "Aggiornamento completato",
   // Links
   cultivationAreasLink: "cultivation-areas",
   createNewCultivationAreaLink: "cultivation-areas/create",

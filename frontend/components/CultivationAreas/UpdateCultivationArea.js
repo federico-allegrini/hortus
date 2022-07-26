@@ -6,6 +6,8 @@ import ErrorMessage from "../ErrorMessage";
 import useForm from "../../lib/useForm";
 import { useTranslation } from "../../lib/getTranslation";
 import Loader from "../Loader";
+import { useRouter } from "next/router";
+import AlertRedirect from "../../lib/alertRedirect";
 
 const UPDATE_CULTIVATION_AREA_MUTATION = gql`
   mutation UPDATE_CULTIVATION_AREA_MUTATION(
@@ -36,11 +38,15 @@ const UPDATE_CULTIVATION_AREA_MUTATION = gql`
   }
 `;
 
-export default function UpdateCultivationArea({ id }) {
+export default function UpdateCultivationArea({ id, user }) {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const { data, error, loading } = useQuery(SINGLE_CULTIVATION_AREA, {
-    variables: { id: id },
+    variables: {
+      id,
+      user: user.id,
+    },
   });
 
   const [
@@ -48,17 +54,32 @@ export default function UpdateCultivationArea({ id }) {
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_CULTIVATION_AREA_MUTATION);
 
-  const { inputs, handleChange, resetForm, clearForm } = useForm(
-    data?.CultivationArea || {
+  const [CultivationArea] = data?.allCultivationAreas || [
+    {
       name: "",
       description: "",
       active: "",
       width: "",
       height: "",
-    }
-  );
+    },
+  ];
+
+  const { inputs, handleChange, resetForm, clearForm } =
+    useForm(CultivationArea);
 
   if (loading) return <Loader />;
+  if (error) return <ErrorMessage error={error} />;
+
+  if (CultivationArea?.name !== "") {
+    if (
+      AlertRedirect(
+        CultivationArea && CultivationArea.user.id === user.id,
+        t.noCultivationAreasFound,
+        `/${t.cultivationAreasLink}`
+      )
+    )
+      return null;
+  }
 
   return (
     <Form
@@ -73,7 +94,11 @@ export default function UpdateCultivationArea({ id }) {
             width: inputs.width,
             height: inputs.height,
           },
+        }).catch((error) => {
+          alert(`${t.error}: ${error}`);
         });
+        alert(t.updateCompleted);
+        router.push({ pathname: `/${t.cultivationAreasLink}/${id}` });
       }}
     >
       <h1>

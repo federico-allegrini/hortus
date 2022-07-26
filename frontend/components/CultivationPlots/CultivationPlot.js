@@ -15,9 +15,7 @@ export default function CultivationPLot({
   return (
     <ItemStyles>
       <Title>
-        <Link
-          href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}?${t.cultivationAreaId}=${cultivationAreaId}`}
-        >
+        <Link href={`/${t.cultivationPlotsLink}/${cultivationPlot.id}`}>
           {truncateText(cultivationPlot.name)}
         </Link>
       </Title>
@@ -32,7 +30,6 @@ export default function CultivationPLot({
             pathname: `${t.cultivationPlotsLink}/update`,
             query: {
               id: cultivationPlot.id,
-              [t.cultivationAreaId]: cultivationAreaId,
             },
           }}
         >

@@ -8,6 +8,7 @@ import { useTranslation } from "../../lib/getTranslation";
 import Loader from "../Loader";
 import AlertRedirect from "../../lib/alertRedirect";
 import { plotsType, plotsTypeOfImplant } from "../../config";
+import { useRouter } from "next/router";
 
 const UPDATE_CULTIVATION_PLOT_MUTATION = gql`
   mutation UPDATE_CULTIVATION_PLOT_MUTATION(
@@ -50,6 +51,7 @@ const UPDATE_CULTIVATION_PLOT_MUTATION = gql`
 
 export default function UpdateCultivationPlot({ id, user }) {
   const { t } = useTranslation();
+  const router = useRouter();
   const { data, loading, error } = useQuery(SINGLE_CULTIVATION_PLOT, {
     variables: { id },
   });
@@ -95,8 +97,11 @@ export default function UpdateCultivationPlot({ id, user }) {
             type: inputs.type,
             typeOfImplant: inputs.typeOfImplant,
           },
+        }).catch((error) => {
+          alert(`${t.error}: ${error}`);
         });
-        // TODO: redirect
+        alert(t.updateCompleted);
+        router.push({ pathname: `/${t.cultivationPlotsLink}/${id}` });
       }}
     >
       <h1>
