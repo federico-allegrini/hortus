@@ -33,7 +33,7 @@ export default function AllCultivationPlots() {
   const cultivationAreaId =
     query[t.cultivationAreaId].length <= 24
       ? query[t.cultivationAreaId].padEnd(24, "0")
-      : "".padEnd(24, "0");
+      : "".padEnd(24, "0"); // TODO: move this in utility function #111
   const queryParams = `${t.cultivationAreaId}=${cultivationAreaId}`;
   if (
     alertRedirect(
