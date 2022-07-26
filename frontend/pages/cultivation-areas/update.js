@@ -4,7 +4,8 @@ import { useUser } from "../../components/User";
 
 export default function UpdateCultivationAreaPage({ query }) {
   const user = useUser();
-  const cultivationAreaId = query.id.padEnd(24, "0");
+  const cultivationAreaId =
+    query.id.length <= 24 ? query.id.padEnd(24, "0") : "".padEnd(24, "0");
   return (
     <ClientOnly>
       <UpdateCultivationArea id={cultivationAreaId} user={user} />
