@@ -8,20 +8,17 @@ export default function UpdateCultivationPlotPage({ query }) {
   const { t } = useTranslation();
   const user = useUser();
   const cultivationPlotId = query.id;
-  const cultivationAreaId = query[t.cultivationAreaId];
-  // TODO: Change message personalized
-  if (alertRedirect(cultivationPlotId, t.error, `/${t.cultivationAreasLink}`))
+  if (
+    alertRedirect(
+      cultivationPlotId,
+      t.noCultivationPlotsFound,
+      `/${t.cultivationAreasLink}`
+    )
+  )
     return null;
-  // TODO: Error for no id
-  // if (alertRedirect(cultivationAreaId, t.error, `/${t.cultivationAreasLink}`))
-  //   return null;
   return (
     <ClientOnly>
-      <UpdateCultivationPlot
-        id={cultivationPlotId}
-        cultivationAreaId={cultivationAreaId}
-        user={user}
-      />
+      <UpdateCultivationPlot id={cultivationPlotId} user={user} />
     </ClientOnly>
   );
 }

@@ -9,13 +9,6 @@ import Loader from "../Loader";
 import AlertRedirect from "../../lib/alertRedirect";
 import { plotsType, plotsTypeOfImplant } from "../../config";
 
-// TODO: update also cultivation area
-
-/*
-$cultivationAreaId: ID
-cultivationArea: { connect: { id: $cultivationAreaId } }
-*/
-
 const UPDATE_CULTIVATION_PLOT_MUTATION = gql`
   mutation UPDATE_CULTIVATION_PLOT_MUTATION(
     $id: ID!
@@ -55,7 +48,7 @@ const UPDATE_CULTIVATION_PLOT_MUTATION = gql`
   }
 `;
 
-export default function UpdateCultivationPlot({ id, cultivationAreaId, user }) {
+export default function UpdateCultivationPlot({ id, user }) {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery(SINGLE_CULTIVATION_PLOT, {
     variables: { id },
