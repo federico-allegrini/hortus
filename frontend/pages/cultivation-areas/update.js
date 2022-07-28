@@ -1,11 +1,11 @@
 import ClientOnly from "../../components/ClientOnly";
 import UpdateCultivationArea from "../../components/CultivationAreas/UpdateCultivationArea";
 import { useUser } from "../../components/User";
+import formatId from "../../lib/formatId";
 
 export default function UpdateCultivationAreaPage({ query }) {
   const user = useUser();
-  const cultivationAreaId =
-    query.id.length <= 24 ? query.id.padEnd(24, "0") : "".padEnd(24, "0"); // TODO: move this in utility function #111
+  const cultivationAreaId = formatId(query.id);
   return (
     <ClientOnly>
       <UpdateCultivationArea id={cultivationAreaId} user={user} />

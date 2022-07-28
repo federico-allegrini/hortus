@@ -9,6 +9,7 @@ import { useUser } from "../../components/User";
 import styled from "styled-components";
 import { perPagePots } from "../../config";
 import alertRedirect from "../../lib/alertRedirect";
+import formatId from "../../lib/formatId";
 
 export const CULTIVATION_PLOTS_PAGINATION_QUERY = gql`
   query CULTIVATION_PLOTS_PAGINATION_QUERY($cultivationArea: ID!) {
@@ -30,10 +31,7 @@ export default function AllCultivationPlots() {
   const { query } = useRouter();
   const queryName = "_allCultivationPlotsMeta";
   const page = parseInt(query.page) || 1;
-  const cultivationAreaId =
-    query[t.cultivationAreaId].length <= 24
-      ? query[t.cultivationAreaId].padEnd(24, "0")
-      : "".padEnd(24, "0"); // TODO: move this in utility function #111
+  const cultivationAreaId = formatId(query[t.cultivationAreaId]);
   const queryParams = `${t.cultivationAreaId}=${cultivationAreaId}`;
   if (
     alertRedirect(
